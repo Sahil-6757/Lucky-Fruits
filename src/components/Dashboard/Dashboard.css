@@ -1,0 +1,80 @@
+.left-panel{
+  top: 0;
+  float: left;
+  position: relative;
+  border-radius: 8px;  
+  height: 100%;
+  background-color: rgb(177, 255, 161);
+}
+
+
+.left-panel ul{
+  list-style: none;
+  
+  font-size:1.4em;
+}
+
+ul .link{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-left: -12px;
+}
+
+.shop-name{
+  color: #34495E;
+}
+.buttonElement{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link:hover{
+  color: rgb(248, 22, 79);
+  cursor: pointer;
+}
+
+.link{
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.item-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-form{
+  width: 43rem;
+}
+
+.fa-bars{
+  font-size: 2rem;
+}
+
+.fa-bars:hover {
+  cursor: pointer;
+  color: rgb(248, 22, 79);
+
+}
+
+.fa-icon{
+  margin-right: 12px;
+}
+
+@media (max-width:320px)  { 
+  
+.left-panel ul .link{
+  display: none;
+}
+
+ }
+@media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }

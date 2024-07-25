@@ -1,38 +1,135 @@
-.App {
-  text-align: center;
+
+*{
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card{
+  position: relative;
+  height: 34.5rem;
+}
+.card:hover{
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.about-us{
+  background-color: #DEEEEB;
+  height: 23rem;
+  width: 100%;
+}
+
+.about-us h2{
+  color: #34495E;
+}
+
+.shop-name{
+  color: #34495E;
+}
+
+.fa-regula{
+  height: 12px;
+  width: 12px;
+  color: black;
+}
+
+.google-map{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border:0; width: 38rem; height: 19rem ; 
+}
+
+@media only screen and (max-width: 480px) {
+  .google-map{
+    width: 21rem;
+    /* position: relative; */
+    /* margin-top: 5rem; */
+  }
+  .contact-us{
+    margin-top: 20rem;
+  }
+  .card{
+    width: 10rem;
+    height: auto;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.contact-us{
+  background-color: #DEEEEB;
+  height: 23rem;
+  width: 100%;
+}
+
+.contact-us h2{
+  color: #34495E;
+
+} 
+
+.login-btn{
+  border: none;
+  background-color: #72F16D;
+  border-radius: 7px;
+  padding: 4px;
+  width: 4rem;
+  color: #212F3D;
+  font-weight: 600;
+}
+.login-form{
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
-.App-link {
-  color: #61dafb;
+.login{
+  height: 50vh;
+  width: 50vw;
+  overflow: hidden;
+  margin-top: 3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* Admin Dashboard starts */
+
+
+
+/* Admin Dashboard ends */
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  
+}
+
+.cart-container{
+  /* border: 1px solid brown; */
+  height: 43rem;
+  width: 75rem;
+  /* background-color: #212F3D; */
+}
+
+.cart-items{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.checkout-btn{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 1rem;
+}
+
+.total{
+  display: flex;
+  justify-content: end;
+  align-items:end;
 }

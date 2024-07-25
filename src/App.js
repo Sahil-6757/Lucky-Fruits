@@ -1,24 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Crousel from "./components/Crousel";
+import { Route, Routes, Outlet } from "react-router-dom";
+import Login from "./components/Login";
+import { Auth0Provider } from "@auth0/auth0-react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Register from "./components/Register";
+import DNavbar from "./components/Dashboard/DNavbar";
+import Dhome from "./components/Dashboard/Dhome";
+import Ditem from "./components/Dashboard/Ditem";
+import Dorder from "./components/Dashboard/Dorder";
+import Dcontact from "./components/Dashboard/Dcontact";
+import Duser from "./components/Dashboard/Duser";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
+import { Alert } from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ToastContainer />
+      <Auth0Provider
+        domain="dev-q0ap243k5ammap53.us.auth0.com"
+        clientId="MA063X0vQmLDi10oZoy7zwZRaW4lPJVA"
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+        }}
+      >
+       
+        <Navbar />
+        <Routes>
+          <Route Component={Crousel} index="/" />
+          <Route Component={Login} path="/login" />
+          <Route Component={Register} path="/register" />
+          <Route Component={Cart} path="/cart" />
+          <Route Component={Checkout} path="/checkout" />
+          <Route Component={Dashboard} path="/Dashboard">
+         
+            <Route Component={Dhome} path="dHome" />
+            <Route Component={Ditem} path="dItem" />
+            <Route Component={Dorder} path="dOrder" />
+            <Route Component={Dcontact} path="dContact" />
+            <Route Component={Duser} path="dUser" />
+          </Route>
+        </Routes>
+      </Auth0Provider>
+
+      
+    </>
   );
 }
 
