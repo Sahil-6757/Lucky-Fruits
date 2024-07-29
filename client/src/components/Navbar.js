@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import  { useState } from 'react';
+
 
 function Navbar() {
+  const [isActive, setIsActive] = useState(false);
+
+  function handleClick () {
+    console.log("jgdhg")
+    setIsActive(!isActive);
+  };
+  // Function to toggle the class on a different element
+  useEffect(() => {
+    
+    handleClick()
+    
+  }, [])
+  
+ 
   return (
     <nav className="navbar  navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -19,9 +35,9 @@ function Navbar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" onClick={()=>handleClick()}></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div  id="navbarSupportedContent" className={isActive ? 'collapse navbar-collapse show' : 'collapse navbar-collapse '}>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               {/* <Link to={"/"} className="nav-link active" aria-current="page">

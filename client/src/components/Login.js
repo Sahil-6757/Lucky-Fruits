@@ -4,7 +4,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 function Login() {
   const navigation = useNavigate();
-  const [Login, setLogin] = useState(false);
+  const [isLoggin, setisLoggin] = useState({
+    login:false
+  })
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,6 +22,18 @@ function Login() {
   //     console.log(resp.data);
   //   });
   // }
+
+  function loginSuccess() {
+    setisLoggin({login:true})
+    localStorage.setItem("login",isLoggin.login)
+    console.log(isLoggin.login);
+  }
+  function loginFail() {
+    setisLoggin({login:false})
+    localStorage.setItem("login",isLoggin.login)
+
+    console.log(isLoggin);
+  }
   const loginBtn = (e) => {
     e.preventDefault();
     if (!(formData.email && formData.password)) {
@@ -43,14 +57,15 @@ function Login() {
               position: "top-center",
               autoClose: 1000,
             });
-            setLogin(true);
-            localStorage.setItem("login", Login);
+            localStorage.setItem("login",isLoggin.login)
+            loginSuccess();
             navigation("/Dashboard");
           } else {
             toast.error("Invalid Username and Password", {
               position: "top-center",
               autoClose: 1000,
             });
+            loginFail();
           }
         })
 

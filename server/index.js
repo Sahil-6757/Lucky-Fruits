@@ -5,9 +5,11 @@ const PORT = process.env.PORT || 8000;
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const multer = require("multer");
-require("dotenv").config;
+const bcrypt = require("bcryptjs");
+require("dotenv").config();
 app.use(express.static("uploads"));
 
+const db_URL = process.env.MONGODB_URL;
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -19,19 +21,12 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
-// Mongoose connection starts
 
-const mongodb_url = process.env.MONGODB_URL;
+// Mongoose connection starts
 async function main() {
-  await mongoose.connect("mongodb://localhost:27017/Lucky_Shop");
+  await mongoose.connect(db_URL);
 }
-main()
-  .then(() => {
-    console.log("Database Connected");
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+main().catch((err) => console.log(err));
 
 const contactSchema = new mongoose.Schema({
   name: { type: String, unique: false },
@@ -73,7 +68,6 @@ let User = mongoose.model("users", userSchema);
 let Admin = mongoose.model("admins", adminSchema);
 let Item = mongoose.model("items", itemSchema);
 let Order = mongoose.model("order", orderSchema);
-
 // Mongoose connection ends
 
 // Middleware starts
@@ -110,16 +104,15 @@ app.post("/login", async (req, res) => {
 
 app.post("/register", async (req, res) => {
   let user = new User();
-  user.name = req.body.name;
-  user.email = req.body.email;
-  user.password = req.body.password;
-  res.json({ message: "Success" });
-  await user.save();
+  const { name, email, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newUser = new User({ name, email, password: hashedPassword });
+  newUser.save();
+  res.json({ message: "success" });
 });
 
 app.post("/order", async (req, res) => {
   let order = new Order();
-
   res.json({ message: "success" });
   let result = Order.find(req.body);
   if (result > 0) {
@@ -167,24 +160,24 @@ app.delete("/delete-order/:id", async (req, res) => {
   }
 });
 
-app.put("/edititem/:id",upload.single('image'), async (req, res) => {
+app.put("/edititem/:id", upload.single("image"), async (req, res) => {
   try {
-   
     console.log(req.params.id);
-    await Item.findOneAndUpdate({_id:req.params.id},{
-      $set:{
-        name : req.body.name,
-        description : req.body.description,
-        rate: req.body.rate,
-        image : req.file.filename 
+    await Item.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          name: req.body.name,
+          description: req.body.description,
+          rate: req.body.rate,
+          image: req.file.filename,
+        },
       }
-      
-    })
+    );
     res.json({ message: "success" });
   } catch (error) {
     res.json({ error });
   }
-
 });
 
 app.delete("/userDelete/:id", async (req, res) => {
@@ -212,9 +205,6 @@ app.get("/", async (req, res) => {
   let docs = await Contact.find({});
   res.json(docs);
 });
-
-
-
 
 app.get("/item", async (req, res) => {
   let data = await Item.find({});
