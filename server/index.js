@@ -24,7 +24,9 @@ const upload = multer({ storage: storage });
 
 // Mongoose connection starts
 async function main() {
-  await mongoose.connect('mongodb+srv://arbaz151033:Arbazkhan%406757@cluster.dapmmwg.mongodb.net/Lucky_Shop?retryWrites=true&w=majority&appName=cluster');
+  await mongoose.connect(
+    "mongodb+srv://arbaz151033:Arbazkhan%406757@cluster.dapmmwg.mongodb.net/Lucky_Shop?retryWrites=true&w=majority&appName=clusternp"
+  );
 }
 main().catch((err) => console.log(err));
 
