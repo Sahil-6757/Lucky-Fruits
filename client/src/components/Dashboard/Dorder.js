@@ -1,23 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { DataGrid } from '@mui/x-data-grid';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import "./Dashboard.css";
 
 
 function Dorder() {
-
   function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
   }
-
-  
-
-
-
-
-
-
-
 
   const [Order, setOrder] = useState([]);
   const getData = () => {
@@ -30,24 +19,17 @@ function Dorder() {
     getData();
   }, []);
 
-
-  const rows = Order.map((value)=>{
-    createData(value.name,value.email)
-  })
+  const rows = Order.map((value) => {
+    createData(value.name, value.email);
+  });
 
   const handleDelete = (e) => {
     axios.delete(`http://localhost:8000/delete-order/${e}`).then((resp) => {});
     getData();
   };
 
-
- 
-  
   return (
     <>
-      
-
-
       <table className=" table container table-hover">
         <thead>
           <tr className="text-center">
@@ -62,9 +44,7 @@ function Dorder() {
           </tr>
         </thead>
         <tbody>
-      
-
-        {/* <TableContainer className="mx-2" component={Paper}>
+          {/* <TableContainer className="mx-2" component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -110,7 +90,6 @@ function Dorder() {
       </Table>
     </TableContainer> */}
 
-
           {Order.map((value, index) => {
             return (
               <tr key={index + 1}>
@@ -132,13 +111,18 @@ function Dorder() {
                 </td>
                 <td>{value.total}</td>
                 <td>
-                <i class="fa-solid fa-check" style={{fontSize:"1.4rem"}}></i>
+                  <i
+                    class="fa-solid fa-check"
+                    style={{ fontSize: "1.4rem" }}
+                  ></i>
                   {/* <button className="btn btn-primary">Complete</button> */}
                 </td>
                 <td>
-
-                <i class="fa-solid fa-trash text-danger" style={{fontSize:"1.4rem"}} onClick={()=>handleDelete(value.id)}></i>
-                  
+                  <i
+                    class="fa-solid fa-trash text-danger"
+                    style={{ fontSize: "1.4rem" }}
+                    onClick={() => handleDelete(value.id)}
+                  ></i>
                 </td>
               </tr>
             );

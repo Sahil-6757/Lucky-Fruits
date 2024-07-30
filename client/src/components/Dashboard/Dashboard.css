@@ -1,80 +1,101 @@
-.left-panel{
+.left-panel {
   top: 0;
   float: left;
   position: relative;
-  border-radius: 8px;  
+  border-radius: 8px;
   height: 100%;
   background-color: rgb(177, 255, 161);
 }
 
-
-.left-panel ul{
+.left-panel ul {
   list-style: none;
-  
-  font-size:1.4em;
+
+  font-size: 1.4em;
 }
 
-ul .link{
+ul .link {
   display: flex;
   align-items: center;
   justify-content: left;
   margin-left: -12px;
 }
 
-.shop-name{
-  color: #34495E;
+.shop-name {
+  color: #34495e;
 }
-.buttonElement{
+.buttonElement {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.link:hover{
+.link:hover {
   color: rgb(248, 22, 79);
   cursor: pointer;
 }
 
-.link{
+.link {
   text-decoration: none;
   color: black;
 }
 
-
-
-.item-page{
+.item-page {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.item-form{
+.item-form {
   width: 43rem;
 }
 
-.fa-bars{
+.fa-bars {
   font-size: 2rem;
 }
 
 .fa-bars:hover {
   cursor: pointer;
   color: rgb(248, 22, 79);
-
 }
 
-.fa-icon{
+.fa-icon {
   margin-right: 12px;
 }
 
-@media (max-width:320px)  { 
-  
-.left-panel ul .link{
-  display: none;
+@media (max-width: 320px) {
+  .left-panel {
+    width: 4rem;
+  }
+
+  .fa-bars {
+    margin-right: 2rem;
+    display: none;
+  }
+  .nav-title {
+    display: none;
+  }
+}
+@media (min-width: 481px) {
+  /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+}
+@media (min-width: 641px) {
+  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+}
+@media (min-width: 961px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+}
+@media (min-width: 1281px) {
+  /* hi-res laptops and desktops */
 }
 
- }
-@media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
-@media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
-@media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
-@media (min-width:1281px) { /* hi-res laptops and desktops */ }
+@keyframes shiftNav{
+  0%{
+    left: 0px;
+  }
+  100%{
+    left: 20px;
+  }
+}

@@ -29,7 +29,6 @@ function App() {
           redirect_uri: window.location.origin,
         }}
       >
-       
         <Navbar />
         <Routes>
           <Route Component={Crousel} index="/" />
@@ -38,7 +37,6 @@ function App() {
           <Route Component={Cart} path="/cart" />
           <Route Component={Checkout} path="/checkout" />
           <Route Component={Dashboard} path="/Dashboard">
-         
             <Route Component={Dhome} path="dHome" />
             <Route Component={Ditem} path="dItem" />
             <Route Component={Dorder} path="dOrder" />
@@ -47,8 +45,6 @@ function App() {
           </Route>
         </Routes>
       </Auth0Provider>
-
-      
     </>
   );
 }
