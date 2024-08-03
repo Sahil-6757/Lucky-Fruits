@@ -210,7 +210,7 @@ function Ditem() {
                   {index < 0 ? (
                     <p>No item Found</p>
                   ) : (
-                    <div className="col-md-4">
+                    <div className="col-md-4 col-sm-4">
                       <div
                         className="card my-2"
                         key={value.image}

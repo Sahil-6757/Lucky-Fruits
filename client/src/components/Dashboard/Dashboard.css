@@ -64,7 +64,13 @@ ul .link {
 
 @media (max-width: 320px) {
   .left-panel {
-    width: 4rem;
+    width: 3.4rem;
+    font-size: 12px;
+  }
+
+  .item-page{
+    font-size: 12px;
+    padding: 12px;
   }
 
   .fa-bars {
@@ -96,6 +102,6 @@ ul .link {
     left: 0px;
   }
   100%{
-    left: 20px;
+    left: 3rem;
   }
 }
