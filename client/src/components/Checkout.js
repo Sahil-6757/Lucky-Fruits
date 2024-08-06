@@ -44,7 +44,7 @@ function Checkout() {
         autoClose: 1000,
       });
     } else {
-      axios.post("https://localhost:10000/order", formData).then((resp) => {
+      axios.post("http://localhost:10000/order", formData).then((resp) => {
         let message = resp.data.message;
         if (message === "success") {
           toast.success("Order Placed Successfully", {

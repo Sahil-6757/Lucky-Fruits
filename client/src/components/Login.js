@@ -18,7 +18,7 @@ function Login() {
   };
 
   // async function getData() {
-  //   axios.get("https://localhost:10000").then((resp) => {
+  //   axios.get("http://localhost:10000").then((resp) => {
   //     console.log(resp.data);
   //   });
   // }
@@ -43,7 +43,7 @@ function Login() {
       });
     } else {
       axios
-        .post("https://localhost:10000/login", formData)
+        .post("http://localhost:10000/login", formData)
         .then((resp) => {
           let result = resp.data.message;
           if (result === "login Success") {

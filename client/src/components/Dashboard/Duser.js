@@ -7,7 +7,7 @@ function Duser() {
   const [User, setUser] = useState();
 
   async function getData() {
-    axios.get("https://localhost:10000/user").then((resp) => {
+    axios.get("http://localhost:10000/user").then((resp) => {
       setUser(resp.data);
       console.log(User);
     });
@@ -15,7 +15,7 @@ function Duser() {
 
   const handleDelete = (index) => {
     try {
-      axios.delete(`https://localhost:10000/userDelete/${index}`).then((resp) => {
+      axios.delete(`http://localhost:10000/userDelete/${index}`).then((resp) => {
         if (resp.data.message === "Deleted") {
           toast.success("Deleted Successfully", {
             autoClose: 1000,

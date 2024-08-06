@@ -49,13 +49,13 @@ function Crousel() {
   }
 
   const getItems = async () => {
-    await axios.get("https://localhost:10000/item").then((resp) => {
+    await axios.get("http://localhost:10000/item").then((resp) => {
       setData(resp.data);
     });
   };
 
   async function getData() {
-    axios.get("https://localhost:10000").then((resp) => {
+    axios.get("http://localhost:10000").then((resp) => {
       setContact(resp.data);
     });
   }
@@ -85,7 +85,7 @@ function Crousel() {
       });
     } else {
       axios
-        .post("https://localhost:10000/contact", formData)
+        .post("http://localhost:10000/contact", formData)
         .then((resp) => {
           if (resp.data.message) {
             toast.success("Success", {
