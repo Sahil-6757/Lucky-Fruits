@@ -65,11 +65,20 @@ const orderSchema = new mongoose.Schema({
   total: { type: String, unique: false },
 });
 
+const saleSchema = new mongoose.Schema({
+  name: { type: String, unique: false },
+  date: { type: String, unique: false },
+  rate: { type: String, unique: false },
+  quantity: { type: Number, unique: false },
+  total: { type: String, unique: false },
+});
+
 let Contact = mongoose.model("contacts", contactSchema);
 let User = mongoose.model("users", userSchema);
 let Admin = mongoose.model("admins", adminSchema);
 let Item = mongoose.model("items", itemSchema);
 let Order = mongoose.model("order", orderSchema);
+let Sales = mongoose.model("sales", saleSchema);
 // Mongoose connection ends
 
 // Middleware starts
@@ -244,6 +253,28 @@ app.delete("/deleteitem/:id", async (req, res) => {
     console.log(error);
   }
 });
+
+app.post("/sales",async (req,res)=>{
+  
+  try {
+    let sale = new Sales();
+    sale.name = req.body.name;
+    sale.date = req.body.date;
+    sale.rate = req.body.rate;
+    sale.quantity = req.body.quantity;
+    sale.total = req.body.total
+    await sale.save();
+    res.json({message:"Success"})
+  } catch (error) {
+    res.json(error)
+  }
+})
+
+app.get("/sales", async (req,res)=>{
+  let data = await Sales.find({});
+  res.json(data)
+})
+
 
 // Server point
 app.listen(PORT, () => {
