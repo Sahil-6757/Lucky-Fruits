@@ -4,18 +4,8 @@ import  { useState } from 'react';
 
 
 function Navbar() {
-  const [isActive, setIsActive] = useState(false);
 
-  function handleClick () {
-    console.log("jgdhg")
-    setIsActive(!isActive);
-  };
-  // Function to toggle the class on a different element
-  useEffect(() => {
-    
-    handleClick()
-    
-  }, [])
+
   
  
   return (
@@ -35,14 +25,14 @@ function Navbar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon" onClick={()=>handleClick()}></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div  id="navbarSupportedContent" className={isActive ? 'collapse navbar-collapse show' : 'collapse navbar-collapse '}>
+        <div  id="navbarSupportedContent" className='collapse navbar-collapse show' >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              {/* <Link to={"/"} className="nav-link active" aria-current="page">
+              <Link to={"/Dashboard/dHome"} className="nav-link active" aria-current="page">
                 Home
-              </Link> */}
+              </Link>
             </li>
           </ul>
           <div className="">

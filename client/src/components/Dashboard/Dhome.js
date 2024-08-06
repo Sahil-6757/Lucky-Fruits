@@ -6,16 +6,16 @@ import "./Dashboard.css";
 
 import { DataGrid } from "@mui/x-data-grid";
 function Dhome() {
-  const [rows, setrows] = useState();
+  const [rows, setrows] = useState([]);
 
-  const columns = [
-    { field: "name", headerName: "Name", width: 130 },
-    { field: "date", headerName: "Date", width: 130 },
-    { field: "rate", headerName: "Rate", width: 130 },
-    { field: "quantity", headerName: "Quantity", width: 130 },
-    { field: "total", headerName: "Total", width: 130 },
-    { field: "action", headerName: "Action", width: 130 },
-  ];
+  // const columns = [
+  //   { field: "name", headerName: "Name", width: 130 },
+  //   { field: "date", headerName: "Date", width: 130 },
+  //   { field: "rate", headerName: "Rate", width: 130 },
+  //   { field: "quantity", headerName: "Quantity", width: 130 },
+  //   { field: "total", headerName: "Total", width: 130 },
+  //   { field: "action", headerName: "Action", width: 130 },
+  // ];
 
   const getData = () => {
     axios.get("https://lucky-shop-backend.onrender.com/sales").then((resp) => {
@@ -26,7 +26,7 @@ function Dhome() {
 
   useEffect(() => {
     getData();
-  },[]);
+  }, []);
 
   const [totalVal, setTotal] = useState();
 
@@ -49,6 +49,17 @@ function Dhome() {
     setFormData({ ...formData, total: result });
   }
 
+  const handleDelete = (e) => {
+    console.log(e);
+    axios
+      .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
+      .then((resp) => {
+        console.log(resp.data);
+      }).catch((error)=>{
+        console.log(error);
+      });
+  };
+
   const handleBlur = () => {
     sum();
 
@@ -65,16 +76,17 @@ function Dhome() {
         pauseOnFocusLoss: false,
       });
     } else {
-      axios.post("https://lucky-shop-backend.onrender.com/sales", formData).then((resp) => {
-        console.log(resp.data);
-      });
+      axios
+        .post("https://lucky-shop-backend.onrender.com/sales", formData)
+        .then((resp) => {
+          console.log(resp.data);
+        });
       toast.success("Successfully Saved", {
         autoClose: 1000,
       });
       getData();
     }
     getData();
-
   };
   return (
     <div className="container" style={{ width: "32rem" }}>
@@ -118,8 +130,44 @@ function Dhome() {
         <input type="submit" value="Save" className="btn btn-primary" />
       </form>
 
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((value, index) => {
+            return (
+              <tr>
+                <th scope="row">{index + 1}</th>
+                <td>{value.name}</td>
+                <td>{value.date}</td>
+                <td>{value.rate}</td>
+                <td>{value.quantity}</td>
+                <td>{value.total}</td>
+                <td>
+                  <i
+                    class="fa-solid fa-trash text-danger mx-3 "
+                    onClick={() => {
+                      handleDelete(value._id);
+                    }}
+                  ></i>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
 
-      <DataGrid
+      {/* Material UI GridView */}
+      {/* <DataGrid
       className="my-3"
         style={{ width: "50rem" }}
         rows={rows}
@@ -132,7 +180,7 @@ function Dhome() {
         }}
         pageSizeOptions={[5, 10]}
         
-      />
+      /> */}
       <Outlet />
     </div>
   );
