@@ -55,6 +55,7 @@ function Dhome() {
       .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
       .then((resp) => {
         console.log(resp.data);
+        getdata();
       }).catch((error)=>{
         console.log(error);
       });
