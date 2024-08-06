@@ -18,7 +18,7 @@ function Dhome() {
   ];
 
   const getData = () => {
-    axios.get("https://lucky-shop-backend.onrender.com:10000/sales").then((resp) => {
+    axios.get("https://lucky-shop-backend.onrender.com/sales").then((resp) => {
       setrows(resp.data);
       console.log(rows);
     });
@@ -65,7 +65,7 @@ function Dhome() {
         pauseOnFocusLoss: false,
       });
     } else {
-      axios.post("https://lucky-shop-backend.onrender.com:10000/sales", formData).then((resp) => {
+      axios.post("https://lucky-shop-backend.onrender.com/sales", formData).then((resp) => {
         console.log(resp.data);
       });
       toast.success("Successfully Saved", {

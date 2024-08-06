@@ -18,7 +18,7 @@ function Login() {
   };
 
   // async function getData() {
-  //   axios.get("https://lucky-shop-backend.onrender.com:10000").then((resp) => {
+  //   axios.get("https://lucky-shop-backend.onrender.com").then((resp) => {
   //     console.log(resp.data);
   //   });
   // }
@@ -43,7 +43,7 @@ function Login() {
       });
     } else {
       axios
-        .post("https://lucky-shop-backend.onrender.com:10000/login", formData)
+        .post("https://lucky-shop-backend.onrender.com/login", formData)
         .then((resp) => {
           let result = resp.data.message;
           if (result === "login Success") {

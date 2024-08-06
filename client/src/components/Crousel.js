@@ -49,13 +49,13 @@ function Crousel() {
   }
 
   const getItems = async () => {
-    await axios.get("https://lucky-shop-backend.onrender.com:10000/item").then((resp) => {
+    await axios.get("https://lucky-shop-backend.onrender.com/item").then((resp) => {
       setData(resp.data);
     });
   };
 
   async function getData() {
-    axios.get("https://lucky-shop-backend.onrender.com:10000").then((resp) => {
+    axios.get("https://lucky-shop-backend.onrender.com").then((resp) => {
       setContact(resp.data);
     });
   }
@@ -85,7 +85,7 @@ function Crousel() {
       });
     } else {
       axios
-        .post("https://lucky-shop-backend.onrender.com:10000/contact", formData)
+        .post("https://lucky-shop-backend.onrender.com/contact", formData)
         .then((resp) => {
           if (resp.data.message) {
             toast.success("Success", {
