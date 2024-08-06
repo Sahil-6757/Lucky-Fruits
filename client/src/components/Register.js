@@ -25,7 +25,7 @@ function Register() {
       });
     } else {
       axios
-        .post("http://localhost:10000/register", formData)
+        .post("https://lucky-shop-backend.onrender.com:10000/register", formData)
         .then((resp) => {
           console.log(resp.data);
           if (resp.data.message) {

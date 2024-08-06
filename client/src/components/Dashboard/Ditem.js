@@ -29,7 +29,7 @@ function Ditem() {
   };
 
   const getData = async () => {
-    await axios.get("http://localhost:10000/item").then((resp) => {
+    await axios.get("https://lucky-shop-backend.onrender.com:10000/item").then((resp) => {
       setData(resp.data);
     });
   };
@@ -52,7 +52,7 @@ function Ditem() {
           autoClose: 2000,
         });
       } else {
-        await axios.post("http://localhost:10000/item", formData, {
+        await axios.post("https://lucky-shop-backend.onrender.com:10000:10000/item", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -88,7 +88,7 @@ function Ditem() {
       });
     } else {
       axios
-        .put(`http://localhost:10000/edititem/${Id}`, formData, {
+        .put(`https://lucky-shop-backend.onrender.com:10000:10000/edititem/${Id}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -119,7 +119,7 @@ function Ditem() {
     console.log(id);
 
     axios
-      .delete(`http://localhost:10000/deleteitem/${id}`)
+      .delete(`https://lucky-shop-backend.onrender.com:10000:10000/deleteitem/${id}`)
       .then(async (resp) => {});
     await getData();
   };
