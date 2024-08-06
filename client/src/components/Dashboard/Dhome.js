@@ -18,7 +18,7 @@ function Dhome() {
   ];
 
   const getData = () => {
-    axios.get("http://localhost:8000/sales").then((resp) => {
+    axios.get("http://localhost:10000/sales").then((resp) => {
       setrows(resp.data);
       console.log(rows);
     });
@@ -65,7 +65,7 @@ function Dhome() {
         pauseOnFocusLoss: false,
       });
     } else {
-      axios.post("http://localhost:8000/sales", formData).then((resp) => {
+      axios.post("http://localhost:10000/sales", formData).then((resp) => {
         console.log(resp.data);
       });
       toast.success("Successfully Saved", {

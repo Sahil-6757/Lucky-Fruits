@@ -6,14 +6,14 @@ import "./Dashboard.css";
 function Dcontact() {
   const [Contact, setContact] = useState();
   async function getData() {
-    axios.get("http://localhost:8000").then((resp) => {
+    axios.get("http://localhost:10000").then((resp) => {
       setContact(resp.data);
     });
   }
 
   const handleDelete = (item) => {
     try {
-      axios.delete(`http://localhost:8000/delete/${item}`).then((resp) => {
+      axios.delete(`http://localhost:10000/delete/${item}`).then((resp) => {
         if (resp.data.message === "Deleted") {
           toast.success("Deleted Successfully", {
             autoClose: 1000,

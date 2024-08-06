@@ -10,7 +10,7 @@ function Dorder() {
 
   const [Order, setOrder] = useState([]);
   const getData = () => {
-    axios.get("http://localhost:8000/order").then((resp) => {
+    axios.get("http://localhost:10000/order").then((resp) => {
       console.log(resp.data);
       setOrder(resp.data);
     });
@@ -24,7 +24,7 @@ function Dorder() {
   });
 
   const handleDelete = (e) => {
-    axios.delete(`http://localhost:8000/delete-order/${e}`).then((resp) => {});
+    axios.delete(`http://localhost:10000/delete-order/${e}`).then((resp) => {});
     getData();
   };
 
