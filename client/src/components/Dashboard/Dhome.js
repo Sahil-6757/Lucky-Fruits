@@ -53,12 +53,18 @@ function Dhome() {
     console.log(e);
     axios
       .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
-      .then((resp) => {
-        console.log(resp.data);
-        getdata();
-      }).catch((error)=>{
+      .then(async (resp) => {
+        console.log(resp.data.message);
+       await getData();
+       toast.success('Deleted Succssfully',{
+        autoClose:1000
+       })
+      }
+    
+    ).catch((error)=>{
         console.log(error);
       });
+      getData();
   };
 
   const handleBlur = () => {
