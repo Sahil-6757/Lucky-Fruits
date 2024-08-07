@@ -50,22 +50,28 @@ function Dhome() {
     setFormData({ ...formData, total: result });
   }
 
-  // const handleClick = (Eid,Ename,Edate,Erate,Equantity) =>{
-  //   console.log(Ename,Edate,Erate,Equantity);
-  //   document.getElementById("name").value = Ename
-  //   document.getElementById("date").value = Edate
-  //   document.getElementById("rate").value = Erate
-  //   document.getElementById("quantity").value = Equantity
+  const handleClick = (Eid,Ename,Edate,Erate,Equantity) =>{
+    document.getElementById("name").value = Ename
+    document.getElementById("date").value = Edate
+    document.getElementById("rate").value = Erate
+    document.getElementById("quantity").value = Equantity
 
+    setFormData({name:Ename,date:Edate,rate:Erate,quantity:Equantity})
+
+    console.log(Ename,Edate,Erate,Equantity);
+    setId(Eid)
    
-  // } 
+  } 
 
-  // const handleEdit = ()=>{
-  //   console.log(formData);
-  //   axios.put(`https://lucky-shop-backend.onrender.com/sales-edit/${Eid}`,formData).then((resp)=>{
-  //     console.log(resp.data);
-  //   })
-  // }
+  const handleEdit = async ()=>{
+    console.log(formData);
+    axios.put(`https://lucky-shop-backend.onrender.com/sales-edit/${Id}`,formData).then((resp)=>{
+      console.log(resp.data);
+      
+    })
+    await getData()
+
+  }
 
   const handleDelete = (e) => {
     console.log(e);
@@ -158,7 +164,7 @@ function Dhome() {
         <h4 className="d-flex justify-content-center">Total = {totalVal}</h4>
         <input type="submit" value="Save" className="btn btn-primary" />
         <input type="button" value="Edit"
-        //  onClick={handleEdit}
+         onClick={handleEdit}
           className="mx-3 btn btn-secondary" />
       </form>
 
@@ -178,7 +184,7 @@ function Dhome() {
           {rows.map((value, index) => {
             return (
               <tr 
-              // onClick={()=>handleClick(value._id,value.name,value.date,value.rate,value.quantity)}
+              onClick={()=>handleClick(value._id,value.name,value.date,value.rate,value.quantity)}
               >
                 <th scope="row">{index + 1}</th>
                 <td>{value.name}</td>
