@@ -49,6 +49,10 @@ function Dhome() {
     setFormData({ ...formData, total: result });
   }
 
+  const handleClick = (name,date,rate,quantity) =>{
+    console.log(name,date,rate,quantity);
+  } 
+
   const handleDelete = (e) => {
     console.log(e);
     axios
@@ -152,7 +156,7 @@ function Dhome() {
         <tbody>
           {rows.map((value, index) => {
             return (
-              <tr>
+              <tr onClick={()=>handleClick(value.name,value.date,value.rate,value.quantity)}>
                 <th scope="row">{index + 1}</th>
                 <td>{value.name}</td>
                 <td>{value.date}</td>
