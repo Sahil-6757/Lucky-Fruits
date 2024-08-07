@@ -50,6 +50,8 @@ function Dhome() {
     setFormData({ ...formData, total: result });
   }
 
+
+
   const handleClick = (Eid,Ename,Edate,Erate,Equantity) =>{
     document.getElementById("name").value = Ename
     document.getElementById("date").value = Edate
@@ -60,16 +62,21 @@ function Dhome() {
 
     console.log(Ename,Edate,Erate,Equantity);
     setId(Eid)
+    getData()
    
   } 
 
   const handleEdit = async ()=>{
     console.log(formData);
     axios.put(`https://lucky-shop-backend.onrender.com/sales-edit/${Id}`,formData).then((resp)=>{
-      console.log(resp.data);
-      
+      console.log(resp.data.message);
+      getData();
     })
-    await getData()
+    toast.success('Updated Succssfully',{
+      autoClose:1000
+    }
+  )
+    getData();
 
   }
 
@@ -163,7 +170,7 @@ function Dhome() {
         <hr />
         <h4 className="d-flex justify-content-center">Total = {totalVal}</h4>
         <input type="submit" value="Save" className="btn btn-primary" />
-        <input type="button" value="Edit"
+        <input type="button" value="Update"
          onClick={handleEdit}
           className="mx-3 btn btn-secondary" />
       </form>
@@ -185,6 +192,7 @@ function Dhome() {
             return (
               <tr 
               onClick={()=>handleClick(value._id,value.name,value.date,value.rate,value.quantity)}
+              className="table-row"
               >
                 <th scope="row">{index + 1}</th>
                 <td>{value.name}</td>
