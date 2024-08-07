@@ -49,8 +49,16 @@ function Dhome() {
     setFormData({ ...formData, total: result });
   }
 
-  const handleClick = (name,date,rate,quantity) =>{
-    console.log(name,date,rate,quantity);
+  const handleClick = (Eid,Ename,Edate,Erate,Equantity) =>{
+    console.log(Ename,Edate,Erate,Equantity);
+    document.getElementById("name").value = Ename
+    document.getElementById("date").value = Edate
+    document.getElementById("rate").value = Erate
+    document.getElementById("quantity").value = Equantity
+
+    axios.put(`https://lucky-shop-backend.onrender.com/sales-edit/${Eid}`,formData).then((resp)=>{
+      console.log(resp.data);
+    })
   } 
 
   const handleDelete = (e) => {
@@ -105,7 +113,7 @@ function Dhome() {
         <input
           type="text"
           name="name"
-          id=""
+          id="name"
           onChange={handleChange}
           className="form-control my-1"
           placeholder="name"
@@ -113,14 +121,14 @@ function Dhome() {
         <input
           type="date"
           name="date"
-          id=""
+          id="date"
           onChange={handleChange}
           className="form-control my-1"
         />
         <input
           type="number"
           name="rate"
-          id=""
+          id="rate"
           onChange={handleChange}
           onBlur={handleBlur}
           className="form-control my-1"
@@ -129,7 +137,7 @@ function Dhome() {
         <input
           type="number"
           name="quantity"
-          id=""
+          id="quantity"
           onChange={handleChange}
           onBlur={handleBlur}
           className="form-control my-1"
@@ -156,7 +164,7 @@ function Dhome() {
         <tbody>
           {rows.map((value, index) => {
             return (
-              <tr onClick={()=>handleClick(value.name,value.date,value.rate,value.quantity)}>
+              <tr onClick={()=>handleClick(value._id,value.name,value.date,value.rate,value.quantity)}>
                 <th scope="row">{index + 1}</th>
                 <td>{value.name}</td>
                 <td>{value.date}</td>
