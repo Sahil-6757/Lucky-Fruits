@@ -110,7 +110,11 @@ function Dhome() {
         autoClose: 1000,
       });
       getData();
-    }
+      document.getElementById('name').value = ""
+      document.getElementById('date').value = ""
+      document.getElementById('rate').value = ""
+      document.getElementById('quantity').value = ""
+        }
     getData();
   };
   return (
