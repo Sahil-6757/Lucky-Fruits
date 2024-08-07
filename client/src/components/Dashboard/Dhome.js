@@ -7,6 +7,7 @@ import "./Dashboard.css";
 import { DataGrid } from "@mui/x-data-grid";
 function Dhome() {
   const [rows, setrows] = useState([]);
+  const [Id, setId] = useState()
 
   // const columns = [
   //   { field: "name", headerName: "Name", width: 130 },
@@ -49,17 +50,22 @@ function Dhome() {
     setFormData({ ...formData, total: result });
   }
 
-  const handleClick = (Eid,Ename,Edate,Erate,Equantity) =>{
-    console.log(Ename,Edate,Erate,Equantity);
-    document.getElementById("name").value = Ename
-    document.getElementById("date").value = Edate
-    document.getElementById("rate").value = Erate
-    document.getElementById("quantity").value = Equantity
+  // const handleClick = (Eid,Ename,Edate,Erate,Equantity) =>{
+  //   console.log(Ename,Edate,Erate,Equantity);
+  //   document.getElementById("name").value = Ename
+  //   document.getElementById("date").value = Edate
+  //   document.getElementById("rate").value = Erate
+  //   document.getElementById("quantity").value = Equantity
 
-    axios.put(`https://lucky-shop-backend.onrender.com/sales-edit/${Eid}`,formData).then((resp)=>{
-      console.log(resp.data);
-    })
-  } 
+   
+  // } 
+
+  // const handleEdit = ()=>{
+  //   console.log(formData);
+  //   axios.put(`https://lucky-shop-backend.onrender.com/sales-edit/${Eid}`,formData).then((resp)=>{
+  //     console.log(resp.data);
+  //   })
+  // }
 
   const handleDelete = (e) => {
     console.log(e);
@@ -147,6 +153,9 @@ function Dhome() {
         <hr />
         <h4 className="d-flex justify-content-center">Total = {totalVal}</h4>
         <input type="submit" value="Save" className="btn btn-primary" />
+        <input type="button" value="Edit"
+        //  onClick={handleEdit}
+          className="mx-3 btn btn-secondary" />
       </form>
 
       <table class="table table-hover">
@@ -164,7 +173,9 @@ function Dhome() {
         <tbody>
           {rows.map((value, index) => {
             return (
-              <tr onClick={()=>handleClick(value._id,value.name,value.date,value.rate,value.quantity)}>
+              <tr 
+              // onClick={()=>handleClick(value._id,value.name,value.date,value.rate,value.quantity)}
+              >
                 <th scope="row">{index + 1}</th>
                 <td>{value.name}</td>
                 <td>{value.date}</td>
