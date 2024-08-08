@@ -7,7 +7,7 @@ import "./Dashboard.css";
 import { DataGrid } from "@mui/x-data-grid";
 function Dhome() {
   const [rows, setrows] = useState([]);
-  const [Id, setId] = useState()
+  const [Id, setId] = useState();
 
   // const columns = [
   //   { field: "name", headerName: "Name", width: 130 },
@@ -21,7 +21,6 @@ function Dhome() {
   const getData = () => {
     axios.get("https://lucky-shop-backend.onrender.com/sales").then((resp) => {
       setrows(resp.data);
-      console.log(rows);
     });
   };
 
@@ -50,53 +49,59 @@ function Dhome() {
     setFormData({ ...formData, total: result });
   }
 
+  const handleClick = (Eid, Ename, Edate, Erate, Equantity) => {
+    document.getElementById("name").value = Ename;
+    document.getElementById("date").value = Edate;
+    document.getElementById("rate").value = Erate;
+    document.getElementById("quantity").value = Equantity;
 
+    setFormData({ name: Ename, date: Edate, rate: Erate, quantity: Equantity });
 
-  const handleClick = (Eid,Ename,Edate,Erate,Equantity) =>{
-    document.getElementById("name").value = Ename
-    document.getElementById("date").value = Edate
-    document.getElementById("rate").value = Erate
-    document.getElementById("quantity").value = Equantity
-
-    setFormData({name:Ename,date:Edate,rate:Erate,quantity:Equantity})
-
-    console.log(Ename,Edate,Erate,Equantity);
-    setId(Eid)
-    getData()
-   
-  } 
-
-  const handleEdit = async ()=>{
-    console.log(formData);
-    axios.put(`https://lucky-shop-backend.onrender.com/sales-edit/${Id}`,formData).then((resp)=>{
-      console.log(resp.data.message);
-      getData();
-    })
-    toast.success('Updated Succssfully',{
-      autoClose:1000
-    }
-  )
+    setId(Eid);
     getData();
+  };
 
-  }
+  const handleEdit = () => {
+    let name = document.getElementById("name").value;
+    let date = document.getElementById("date").value;
+    let rate = document.getElementById("rate").value;
+    let quantity = document.getElementById("quantity").value;
+    if (!(name, date, rate, quantity)) {
+      toast.error("Fill the Form", {
+        autoClose: 1000,
+      });
+    } else {
+      axios
+        .put(
+          `https://lucky-shop-backend.onrender.com/sales-edit/${Id}`,
+          formData
+        )
+        .then((resp) => {
+          getData();
+        });
+      toast.success("Updated Succssfully", {
+        autoClose: 1000,
+      });
+    }
+    getData();
+  };
 
-  const handleDelete = (e) => {
-    console.log(e);
+  const handleDelete = (e,name) => {
+   let result =  window.confirm(`Are you really want to Delete ${name}`);
+   console.log(result);
+   if(result){
     axios
       .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
       .then(async (resp) => {
-        console.log(resp.data.message);
-       await getData();
-       toast.success('Deleted Succssfully',{
-        autoClose:1000
-       })
-      }
-    
-    ).catch((error)=>{
-        console.log(error);
-      });
-      getData();
+        await getData();
+        toast.success("Deleted Succssfully", {
+          autoClose: 1000,
+        });
+      })
+      .catch((error) => {});
+    getData();
   };
+}
 
   const handleBlur = () => {
     sum();
@@ -116,18 +121,16 @@ function Dhome() {
     } else {
       axios
         .post("https://lucky-shop-backend.onrender.com/sales", formData)
-        .then((resp) => {
-          console.log(resp.data);
-        });
+        .then((resp) => {});
       toast.success("Successfully Saved", {
         autoClose: 1000,
       });
       getData();
-      document.getElementById('name').value = ""
-      document.getElementById('date').value = ""
-      document.getElementById('rate').value = ""
-      document.getElementById('quantity').value = ""
-        }
+      document.getElementById("name").value = "";
+      document.getElementById("date").value = "";
+      document.getElementById("rate").value = "";
+      document.getElementById("quantity").value = "";
+    }
     getData();
   };
   return (
@@ -170,9 +173,12 @@ function Dhome() {
         <hr />
         <h4 className="d-flex justify-content-center">Total = {totalVal}</h4>
         <input type="submit" value="Save" className="btn btn-primary" />
-        <input type="button" value="Update"
-         onClick={handleEdit}
-          className="mx-3 btn btn-secondary" />
+        <input
+          type="button"
+          value="Update"
+          onClick={handleEdit}
+          className="mx-3 btn btn-secondary"
+        />
       </form>
 
       <table class="table table-hover">
@@ -190,9 +196,17 @@ function Dhome() {
         <tbody>
           {rows.map((value, index) => {
             return (
-              <tr 
-              onClick={()=>handleClick(value._id,value.name,value.date,value.rate,value.quantity)}
-              className="table-row"
+              <tr
+                onClick={() =>
+                  handleClick(
+                    value._id,
+                    value.name,
+                    value.date,
+                    value.rate,
+                    value.quantity
+                  )
+                }
+                className="table-row"
               >
                 <th scope="row">{index + 1}</th>
                 <td>{value.name}</td>
@@ -204,7 +218,7 @@ function Dhome() {
                   <i
                     class="fa-solid fa-trash text-danger mx-3 "
                     onClick={() => {
-                      handleDelete(value._id);
+                      handleDelete(value._id,value.name);
                     }}
                   ></i>
                 </td>
