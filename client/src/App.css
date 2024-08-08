@@ -50,6 +50,9 @@
     /* position: relative; */
     /* margin-top: 5rem; */
   }
+  .navbar{
+    width: 28rem;
+  }
   .contact-us{
     margin-top: 20rem;
   }

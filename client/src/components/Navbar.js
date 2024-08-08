@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import  { useState } from 'react';
+import "../App.css";
 
 
 function Navbar() {
@@ -35,7 +36,7 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          <div className="">
+          <div className="Navbar-login">
             <Link
               to="cart"
               className="fa-solid fa-cart-shopping align-center"
