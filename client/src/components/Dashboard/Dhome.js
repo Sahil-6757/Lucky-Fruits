@@ -86,22 +86,22 @@ function Dhome() {
     getData();
   };
 
-  const handleDelete = (e, name) => {
-    let result = window.confirm(`Are you really want to Delete ${name}`);
-    console.log(result);
-    if (result) {
-      axios
-        .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
-        .then(async (resp) => {
-          await getData();
-          toast.success("Deleted Succssfully", {
-            autoClose: 1000,
-          });
-        })
-        .catch((error) => { });
-      getData();
-    };
-  }
+  const handleDelete = (e,name) => {
+   let result =  window.confirm(`Are you really want to Delete ${name}`);
+   console.log(result);
+   if(result){
+    axios
+      .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
+      .then(async (resp) => {
+        await getData();
+        toast.success("Deleted Succssfully", {
+          autoClose: 1000,
+        });
+      })
+      .catch((error) => {});
+    getData();
+  };
+}
 
   const handleBlur = () => {
     sum();
