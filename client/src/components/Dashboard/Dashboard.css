@@ -109,7 +109,7 @@ ul .link {
   }
 
   .home-form{
-    position: absolute;
+    position: relative;
     margin-left: 5rem;
     width: 15rem;
   }
