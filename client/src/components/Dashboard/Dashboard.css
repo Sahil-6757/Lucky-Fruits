@@ -1,10 +1,9 @@
-body {
+body{
   margin: 0;
   padding: 0;
 }
-
 .left-panel {
-  bottom: 0;
+  top: 0;
   float: left;
   position: relative;
   border-radius: 8px;
@@ -14,6 +13,7 @@ body {
 
 .left-panel ul {
   list-style: none;
+
   font-size: 1.4em;
 }
 
@@ -84,24 +84,17 @@ ul .link {
 }
 
 @media (max-width: 420px) {
-  .left-panel ul {
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    bottom: 0;
-    width: 100%;
-
+  .left-panel {
+    width: 3.4rem;
+    font-size: 12px;
   }
-
 
   .item-page {
     font-size: 12px;
     padding: 12px;
   }
 
-  .home-form {
+  .home-form{
     position: absolute;
     margin-left: 5rem;
     width: 15rem;
@@ -110,17 +103,16 @@ ul .link {
   .table {
     width: 28rem;
     margin: 0;
-
+  
   }
-
-  .col {
+  .col{
     padding: -0.5rem .5rem;
   }
 
-  .Navbar-login {
+  .Navbar-login{
     position: absolute;
-    margin-left: 15rem;
-    margin-top: -2rem;
+    margin-left: 18rem;
+    margin-top: -2rem;  
   }
 
   .fa-bars {

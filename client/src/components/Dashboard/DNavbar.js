@@ -21,7 +21,6 @@ function DNavbar() {
       </div>
       <div className="left-panel">
         <ul>
-
           <li>
             <i className="fa-icon fa-solid fa-bars p-4"></i>
           </li>
