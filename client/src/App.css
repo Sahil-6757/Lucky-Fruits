@@ -44,11 +44,14 @@
   border:0; width: 38rem; height: 19rem ; 
 }
 
-@media only screen and (max-width: 480px) {
-  .google-map{
+@media only screen and (max-width: 1080px ) {
+  .google-map{  
     width: 21rem;
     /* position: relative; */
     /* margin-top: 5rem; */
+  }
+  .navbar{
+    width: 28rem;
   }
   .contact-us{
     margin-top: 20rem;

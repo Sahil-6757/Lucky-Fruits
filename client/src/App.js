@@ -17,6 +17,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import { Alert } from "@mui/material";
+import Dsetting from "./components/Dashboard/Dsetting";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             <Route Component={Dorder} path="dOrder" />
             <Route Component={Dcontact} path="dContact" />
             <Route Component={Duser} path="dUser" />
+            <Route Component={Dsetting} path="dSetting" />
           </Route>
         </Routes>
       </Auth0Provider>

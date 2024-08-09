@@ -42,7 +42,7 @@ function DNavbar() {
           <Link to={"dUser"} className="link my-4">
             <i className="fa-icon fa-solid fa-user "></i><span className="nav-title">Users</span> 
           </Link>
-          <Link to={"dHome"} className="link my-4">
+          <Link to={"dSetting"} className="link my-4">
             <i className="fa-icon fa-solid fa-gear "></i><span className="nav-title">Settings</span> 
           </Link>
         </ul>
