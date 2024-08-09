@@ -83,12 +83,26 @@ ul .link {
 
 }
 
-@media (max-width: 420px) {
+
+@media only screen and (max-width: 480px){
   .left-panel {
     width: 3.4rem;
+    height: 3.4rem;
     font-size: 12px;
+    bottom: 0;
+    position: absolute;
+    background-color: transparent;
   }
-
+  .left-panel ul{
+    display: flex;
+    bottom: 0;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    border-radius: 23px;
+    background-color: rgb(177, 255, 161);
+  }
   .item-page {
     font-size: 12px;
     padding: 12px;
@@ -103,7 +117,7 @@ ul .link {
   .table {
     width: 28rem;
     margin: 0;
-  
+    margin-bottom: 5rem;
   }
   .col{
     padding: -0.5rem .5rem;
