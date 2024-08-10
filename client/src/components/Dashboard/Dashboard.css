@@ -83,6 +83,10 @@ ul .link {
 
 }
 
+.container DataGrid{
+  margin-left: auto;
+}
+
 
 @media only screen and (max-width: 480px){
   .left-panel {
@@ -93,6 +97,15 @@ ul .link {
     position: absolute;
     background-color: transparent;
   }
+
+  .fa-cart-shopping{
+    margin-left: -1rem;
+  }
+
+  .login-btn{
+    margin-top: -3rem;
+  }
+
   .left-panel ul{
     display: flex;
     bottom: 0;
@@ -101,7 +114,7 @@ ul .link {
     justify-content: space-between;
     width: 90%;
     border-radius: 23px;
-    background-color: rgb(177, 255, 161);
+    background-color: rgb(208 218 206);
   }
   .item-page {
     font-size: 12px;

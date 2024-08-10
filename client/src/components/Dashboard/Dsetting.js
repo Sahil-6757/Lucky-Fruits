@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import "./Dashboard.css";
 
 function Dsetting() {
     const [rows, setrows] = useState([]);
@@ -26,12 +27,10 @@ function Dsetting() {
   }, []);
 
   return (
-    <div>
-        
-          Material UI GridView
+    
+    <div className="container mx-3">        
       <DataGrid
-      className="my-3 mx-3"
-        style={{ width: "50rem",marginLeft:"2rem !important" }}
+      
         rows={rows}
         getRowId={(row) => row._id}
         columns={columns}
