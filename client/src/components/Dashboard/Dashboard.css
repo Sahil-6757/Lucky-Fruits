@@ -1,7 +1,8 @@
-body{
+body {
   margin: 0;
   padding: 0;
 }
+
 .left-panel {
   top: 0;
   float: left;
@@ -83,8 +84,16 @@ ul .link {
 
 }
 
+.rightBar {
+  position: absolute;
+  top: 9rem;
+  right: 4rem;
+  width: 20rem;
+  height: 5rem
+}
 
-@media only screen and (max-width: 480px){
+
+@media only screen and (max-width: 480px) {
   .left-panel {
     width: 3.4rem;
     height: 3.4rem;
@@ -93,7 +102,8 @@ ul .link {
     position: absolute;
     background-color: transparent;
   }
-  .left-panel ul{
+
+  .left-panel ul {
     display: flex;
     bottom: 0;
     position: fixed;
@@ -103,12 +113,13 @@ ul .link {
     border-radius: 23px;
     background-color: rgb(177, 255, 161);
   }
+
   .item-page {
     font-size: 12px;
     padding: 12px;
   }
 
-  .home-form{
+  .home-form {
     position: relative;
     margin-left: 5rem;
     width: 15rem;
@@ -119,14 +130,15 @@ ul .link {
     margin: 0;
     margin-bottom: 5rem;
   }
-  .col{
+
+  .col {
     padding: -0.5rem .5rem;
   }
 
-  .Navbar-login{
+  .Navbar-login {
     position: absolute;
     margin-left: 18rem;
-    margin-top: -2rem;  
+    margin-top: -2rem;
   }
 
   .fa-bars {
