@@ -75,23 +75,22 @@ ul .link {
 
 .table-row :hover {
   cursor: pointer;
-
 }
 
 .table {
   width: 50rem;
   margin-left: -8rem;
-
 }
 
 .rightBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 9rem;
   right: 4rem;
   width: 20rem;
-  height: 5rem
 }
-
 
 @media only screen and (max-width: 480px) {
   .left-panel {
@@ -103,7 +102,7 @@ ul .link {
     background-color: transparent;
   }
 
-  .rightBar{
+  .rightBar {
     display: none;
   }
 

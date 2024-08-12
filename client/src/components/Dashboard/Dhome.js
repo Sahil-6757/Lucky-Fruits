@@ -3,17 +3,25 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./Dashboard.css";
-
 import { DataGrid } from "@mui/x-data-grid";
 function Dhome() {
   const [rows, setrows] = useState([]);
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
   const [Id, setId] = useState();
-  const [sales, setSales] = useState()
+  const [sales, setSales] = useState();
+  const [salesTotal, setSalestotal] = useState();
+  const [totalVal, setTotal] = useState();
+  const [formData, setFormData] = useState({
+    name: "",
+    date: "",
+    rate: "",
+    quantity: "",
+    total: "",
+  });
   const date = new Date();
-  let datee = (date.getDate())
-  let month = date.getMonth()
-  let year = date.getFullYear()
+  let datee = (date.getDate());
+  let month = date.getMonth();
+  let year = date.getFullYear();
 
   let Datee = `${year}-0${month + 1}-${datee}`;
   const [todayDate, setdate] = useState({
@@ -35,22 +43,8 @@ function Dhome() {
     });
   };
 
-  useEffect(() => {
-    getData();
-    getsalesData()
-    totalSales();
-  }, []);
-
-  const [totalVal, setTotal] = useState();
-
   let result;
-  const [formData, setFormData] = useState({
-    name: "",
-    date: "",
-    rate: "",
-    quantity: "",
-    total: "",
-  });
+
   const handleChange = (e) => {
     let { name, value } = e.target;
     setFormData({ ...formData, [name]: value, total: totalVal });
@@ -62,33 +56,43 @@ function Dhome() {
     setFormData({ ...formData, total: result });
   }
 
+  // function totalSales() {
+  //   let sum = data.reduce((curtval, accumulator) => {
+  //     console.log(accumulator.quantity)
+  //     return parseInt(curtval) + parseInt(accumulator.quantity);
+  //   }, 0);
+
+  //   setSales(sum)
+  //   console.log(sales)
+  // }
 
   function getsalesData() {
     axios.post('https://lucky-shop-backend.onrender.com/sales-result', todayDate).then((resp) => {
       setData(resp.data)
+      let result = resp.data;
+      let sum = result.reduce((curtval, accumulator) => {
+        // console.log(accumulator.quantity)
+        return parseInt(curtval) + parseInt(accumulator.quantity);
+      }, 0);
+      setSales(sum)
+      console.log(sum)
+      let totalSum = result.reduce((curtval, accumulator) => {
+        // console.log(accumulator.quantity)
+        return parseInt(curtval) + parseInt(accumulator.total);
+      }, 0);
+      setSalestotal(totalSum)
+      console.log(salesTotal)
     }).catch((error) => {
       console.log(error)
     })
   }
-
-  function totalSales() {
-    let sum = data.reduce((curtval, accumulator) => {
-      return parseInt(curtval) + parseInt(accumulator.quantity);
-    }, 0);
-    console.log("total sum")
-    setSales(sum)
-    console.log(sales)
-  }
-
 
   const handleClick = (Eid, Ename, Edate, Erate, Equantity) => {
     document.getElementById("name").value = Ename;
     document.getElementById("date").value = Edate;
     document.getElementById("rate").value = Erate;
     document.getElementById("quantity").value = Equantity;
-
     setFormData({ name: Ename, date: Edate, rate: Erate, quantity: Equantity });
-
     setId(Eid);
     getData();
   };
@@ -133,14 +137,11 @@ function Dhome() {
         .catch((error) => { });
       getData();
       getsalesData()
-      totalSales();
     };
   }
 
   const handleBlur = () => {
     sum();
-
-    // formData.total = total;
   };
 
   const handleSubmit = (e) => {
@@ -166,6 +167,10 @@ function Dhome() {
       document.getElementById("quantity").value = "";
     }
     getData();
+    useEffect(() => {
+      getData();
+      getsalesData()
+    }, []);
   };
   return (
     <div className="container" style={{ width: "32rem" }}>
@@ -216,10 +221,10 @@ function Dhome() {
       </form>
 
       <div className="rightBar">
-        <div className="card" >
+        <div className="card" style={{ height: '6rem' }}>
           <div className="card-body ">
-            <p className="card-text">Today's Sales :</p>
-            <p className="card-text">Today's Total :</p>
+            <p className="card-text">Today's Sales : <b> {sales}</b></p>
+            <p className="card-text">Today's Total : <b> {salesTotal}</b></p>
           </div>
         </div>
       </div>
