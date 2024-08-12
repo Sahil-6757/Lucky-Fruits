@@ -7,7 +7,18 @@ import "./Dashboard.css";
 import { DataGrid } from "@mui/x-data-grid";
 function Dhome() {
   const [rows, setrows] = useState([]);
+  const [data, setData] = useState([])
   const [Id, setId] = useState();
+  const [sales, setSales] = useState()
+  const date = new Date();
+  let datee = (date.getDate())
+  let month = date.getMonth()
+  let year = date.getFullYear()
+
+  let Datee = `${year}-0${month + 1}-${datee}`;
+  const [todayDate, setdate] = useState({
+    date: Datee
+  })
 
   // const columns = [
   //   { field: "name", headerName: "Name", width: 130 },
@@ -26,6 +37,8 @@ function Dhome() {
 
   useEffect(() => {
     getData();
+    getsalesData()
+    totalSales();
   }, []);
 
   const [totalVal, setTotal] = useState();
@@ -48,6 +61,25 @@ function Dhome() {
     setTotal(result);
     setFormData({ ...formData, total: result });
   }
+
+
+  function getsalesData() {
+    axios.post('https://lucky-shop-backend.onrender.com/sales-result', todayDate).then((resp) => {
+      setData(resp.data)
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+
+  function totalSales() {
+    let sum = data.reduce((curtval, accumulator) => {
+      return parseInt(curtval) + parseInt(accumulator.quantity);
+    }, 0);
+    console.log("total sum")
+    setSales(sum)
+    console.log(sales)
+  }
+
 
   const handleClick = (Eid, Ename, Edate, Erate, Equantity) => {
     document.getElementById("name").value = Ename;
@@ -86,22 +118,24 @@ function Dhome() {
     getData();
   };
 
-  const handleDelete = (e,name) => {
-   let result =  window.confirm(`Are you really want to Delete ${name}`);
-   console.log(result);
-   if(result){
-    axios
-      .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
-      .then(async (resp) => {
-        await getData();
-        toast.success("Deleted Succssfully", {
-          autoClose: 1000,
-        });
-      })
-      .catch((error) => {});
-    getData();
-  };
-}
+  const handleDelete = (e, name) => {
+    let result = window.confirm(`Are you really want to Delete ${name}`);
+    console.log(result);
+    if (result) {
+      axios
+        .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
+        .then(async (resp) => {
+          await getData();
+          toast.success("Deleted Succssfully", {
+            autoClose: 1000,
+          });
+        })
+        .catch((error) => { });
+      getData();
+      getsalesData()
+      totalSales();
+    };
+  }
 
   const handleBlur = () => {
     sum();
@@ -181,7 +215,16 @@ function Dhome() {
         />
       </form>
 
-      <table class="table table-hover">
+      <div className="rightBar">
+        <div className="card" >
+          <div className="card-body ">
+            <p className="card-text">Today's Sales :</p>
+            <p className="card-text">Today's Total :</p>
+          </div>
+        </div>
+      </div>
+
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -196,7 +239,7 @@ function Dhome() {
         <tbody>
           {rows.map((value, index) => {
             return (
-              <tr
+              <tr key={value._id}
                 onClick={() =>
                   handleClick(
                     value._id,
@@ -216,7 +259,7 @@ function Dhome() {
                 <td>{value.total}</td>
                 <td>
                   <i
-                    class="fa-solid fa-trash text-danger mx-3 "
+                    className="fa-solid fa-trash text-danger mx-3 "
                     onClick={() => {
                       handleDelete(value._id, value.name);
                     }}

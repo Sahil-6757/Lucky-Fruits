@@ -103,6 +103,10 @@ ul .link {
     background-color: transparent;
   }
 
+  .rightBar{
+    display: none;
+  }
+
   .left-panel ul {
     display: flex;
     bottom: 0;
