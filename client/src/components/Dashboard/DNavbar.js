@@ -21,9 +21,9 @@ function DNavbar() {
       </div>
       <div className="left-panel">
         <ul>
-          <li>
+          {/* <li>
             <i className="fa-icon fa-solid fa-bars p-4"></i>
-          </li>
+          </li> */}
 
           <Link to={"dHome"} className="link my-4">
             <i className="fa-icon fa-solid fa-house"></i><span className="nav-title">Home</span> 
