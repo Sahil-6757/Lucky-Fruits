@@ -46,7 +46,6 @@ function Dsetting() {
         
       />
 
-<DatePicker label="Basic date picker" />
 
       
     </div>
