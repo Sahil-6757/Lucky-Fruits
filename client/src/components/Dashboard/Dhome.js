@@ -4,6 +4,9 @@ import { Outlet } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./Dashboard.css";
 import { DataGrid } from "@mui/x-data-grid";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import { Button, IconButton } from "@mui/material";
 function Dhome() {
   const [rows, setrows] = useState([]);
   const [data, setData] = useState([]);
@@ -11,6 +14,7 @@ function Dhome() {
   const [sales, setSales] = useState();
   const [salesTotal, setSalestotal] = useState();
   const [totalVal, setTotal] = useState();
+  const [loading, setLoading] = useState(true)
   const [formData, setFormData] = useState({
     name: "",
     date: "",
@@ -129,10 +133,15 @@ function Dhome() {
       axios
         .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
         .then(async (resp) => {
-          await getData();
+          getData();
           toast.success("Deleted Succssfully", {
             autoClose: 1000,
           });
+          await getsalesData()
+          document.getElementById("name").value = "";
+          document.getElementById("date").value = "";
+          document.getElementById("rate").value = "";
+          document.getElementById("quantity").value = "";
         })
         .catch((error) => { });
       getData();
@@ -160,6 +169,7 @@ function Dhome() {
       toast.success("Successfully Saved", {
         autoClose: 1000,
       });
+      getsalesData()
       getData();
       document.getElementById("name").value = "";
       document.getElementById("date").value = "";
@@ -167,13 +177,16 @@ function Dhome() {
       document.getElementById("quantity").value = "";
     }
     getData();
-    useEffect(() => {
-      getData();
-      getsalesData()
-    }, []);
+
   };
+
+  useEffect(() => {
+    getData();
+    getsalesData()
+  }, []);
   return (
     <div className="container" style={{ width: "32rem" }}>
+   
       <form action="" className="home-form" method="post" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -211,13 +224,20 @@ function Dhome() {
 
         <hr />
         <h4 className="d-flex justify-content-center">Total = {totalVal}</h4>
-        <input type="submit" value="Save" className="btn btn-primary" />
-        <input
+        {/* <input type="submit" value="Save" className="btn btn-primary" /> */}
+        <Button type="submit" variant="contained"> Save</Button>
+
+        <Button variant="contained" onClick={handleEdit} className="mx-3" color="success">
+          Update
+        </Button>
+
+      
+        {/* <input
           type="button"
           value="Update"
           onClick={handleEdit}
           className="mx-3 btn btn-secondary"
-        />
+        /> */}
       </form>
 
       <div className="rightBar">
@@ -228,6 +248,8 @@ function Dhome() {
           </div>
         </div>
       </div>
+     
+
 
       <table className="table table-hover">
         <thead>

@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import "./Dashboard.css";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Button from '@mui/material/Button';
 
 function Dsetting() {
     const [rows, setrows] = useState([]);
@@ -26,9 +29,9 @@ function Dsetting() {
   }, []);
 
   return (
-    <div>
+    <div className="Datagrid">
         
-          Material UI GridView
+        
       <DataGrid
       className="my-3 mx-3"
         style={{ width: "50rem",marginLeft:"2rem !important" }}
@@ -43,6 +46,10 @@ function Dsetting() {
         pageSizeOptions={[5, 10]}
         
       />
+
+<DatePicker label="Basic date picker" />
+
+      
     </div>
   )
 }

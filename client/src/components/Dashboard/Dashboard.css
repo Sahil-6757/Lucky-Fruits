@@ -92,6 +92,13 @@ ul .link {
   width: 20rem;
 }
 
+.Datagrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 @media only screen and (max-width: 480px) {
   .left-panel {
     width: 3.4rem;
