@@ -175,6 +175,7 @@ function Dhome() {
       document.getElementById("date").value = "";
       document.getElementById("rate").value = "";
       document.getElementById("quantity").value = "";
+      document.getElementById('name').focus()
     }
     getData();
 
@@ -250,56 +251,57 @@ function Dhome() {
       </div>
 
 
-      <div class="table-responsive">
-      <table className="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Rate</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Total</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((value, index) => {
-            return (
-              <tr key={value._id}
-                onClick={() =>
-                  handleClick(
-                    value._id,
-                    value.name,
-                    value.date,
-                    value.rate,
-                    value.quantity
-                  )
-                }
-                className="table-row"
-              >
-                <th scope="row">{index + 1}</th>
-                <td>{value.name}</td>
-                <td>{value.date}</td>
-                <td>{value.rate}</td>
-                <td>{value.quantity}</td>
-                <td>{value.total}</td>
-                <td>
-                  <i
-                    className="fa-solid fa-trash text-danger mx-3 "
-                    onClick={() => {
-                      handleDelete(value._id, value.name);
-                    }}
-                  ></i>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div class="table-responsive-sm">
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((value, index) => {
+              return (
+                <tr key={value._id}
+                  onClick={() =>
+                    handleClick(
+                      value._id,
+                      value.name,
+                      value.date,
+                      value.rate,
+                      value.quantity
+                    )
+                  }
+                  className="table-row"
+                >
+                  <th scope="row">{index + 1}</th>
+                  <td>{value.name}</td>
+                  <td>{value.date}</td>
+                  <td>{value.rate}</td>
+                  <td>{value.quantity}</td>
+                  <td>{value.total}</td>
+                  <td>
+                    <i
+                      className="fa-solid fa-trash text-danger mx-3 "
+                      onClick={() => {
+                        handleDelete(value._id, value.name);
+                      }}
+                    ></i>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        </div>
 
-      {/* Material UI GridView */}
-      {/* <DataGrid
+        {/* Material UI GridView */}
+        {/* <DataGrid
       className="my-3"
         style={{ width: "50rem" }}
         rows={rows}
@@ -313,9 +315,9 @@ function Dhome() {
         pageSizeOptions={[5, 10]}
         
       /> */}
-      <Outlet />
-    </div>
-    </div>
+        <Outlet />
+      </div>
+
   );
 }
 

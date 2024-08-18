@@ -47,8 +47,25 @@
   .login-btn{
     margin-top: -58px;
     margin-left: 12px;
-  }
+    position: absolute;
+    bottom: -18px;
 }
+  }
+  .main-navbar{
+    width: 32rem !important;
+  }
+  .Navbar-login{
+    position: absolute;
+    margin-left: 25rem !important;
+    margin-top: -1rem !important;
+  }
+  .cart-icon{
+    position: absolute;
+    top: -8px;
+    font-size: 22px;
+    margin-left: -17px;
+  }
+
 
 @media only screen and (max-width: 1080px ) {
   .google-map{  
