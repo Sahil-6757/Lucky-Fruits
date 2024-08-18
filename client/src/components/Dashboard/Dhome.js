@@ -186,7 +186,7 @@ function Dhome() {
   }, []);
   return (
     <div className="container" style={{ width: "32rem" }}>
-   
+
       <form action="" className="home-form" method="post" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -231,7 +231,7 @@ function Dhome() {
           Update
         </Button>
 
-      
+
         {/* <input
           type="button"
           value="Update"
@@ -248,9 +248,9 @@ function Dhome() {
           </div>
         </div>
       </div>
-     
 
 
+      <div class="table-responsive">
       <table className="table table-hover">
         <thead>
           <tr>
@@ -314,6 +314,7 @@ function Dhome() {
         
       /> */}
       <Outlet />
+    </div>
     </div>
   );
 }

@@ -11,8 +11,8 @@ function DNavbar() {
   //   }
   // }
 
-  const handleBars = ()=>{
-    
+  const handleBars = () => {
+
   }
   return (
     <>
@@ -26,23 +26,23 @@ function DNavbar() {
           </li> */}
 
           <Link to={"dHome"} className="link my-4">
-            <i className="fa-icon fa-solid fa-house"></i><span className="nav-title">Home</span> 
+            <i className="fa-icon fa-solid fa-house"></i><span className="nav-title">Home</span>
           </Link>
-          
+
           <Link to={"dItem"} className="link my-4">
-            <i className="fa-icon fa-solid fa-list "></i><span className="nav-title">Items</span> 
+            <i className="fa-icon fa-solid fa-list "></i><span className="nav-title">Items</span>
           </Link>
           <Link to={"dOrder"} className="link my-4">
-            <i className="fa-icon fa-solid fa-cart-shopping "></i><span className="nav-title">Order</span> 
+            <i className="fa-icon fa-solid fa-cart-shopping "></i><span className="nav-title">Order</span>
           </Link>
           <Link to={"dContact"} className="link my-4">
-            <i className="fa-icon fa-solid fa-id-card"></i><span className="nav-title">Contacts</span> 
+            <i className="fa-icon fa-solid fa-id-card"></i><span className="nav-title">Contacts</span>
           </Link>
           <Link to={"dUser"} className="link my-4">
-            <i className="fa-icon fa-solid fa-user "></i><span className="nav-title">Users</span> 
+            <i className="fa-icon fa-solid fa-user "></i><span className="nav-title">Users</span>
           </Link>
           <Link to={"dSetting"} className="link my-4">
-            <i className="fa-icon fa-solid fa-gear "></i><span className="nav-title">Settings</span> 
+            <i className="fa-icon fa-solid fa-gear "></i><span className="nav-title">Settings</span>
           </Link>
         </ul>
       </div>

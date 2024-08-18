@@ -43,6 +43,12 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border:0; width: 38rem; height: 19rem ; 
 }
+@media only screen and (max-width: 480px) {
+  .login-btn{
+    margin-top: -58px;
+    margin-left: 12px;
+  }
+}
 
 @media only screen and (max-width: 1080px ) {
   .google-map{  
@@ -74,6 +80,7 @@
 } 
 
 .login-btn{
+ 
   border: none;
   background-color: #72F16D;
   border-radius: 7px;
