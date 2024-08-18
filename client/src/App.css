@@ -50,6 +50,9 @@
     position: absolute;
     bottom: -18px;
 }
+.about-us{
+  width: 127%;
+}
   }
   .main-navbar{
     width: 32rem !important;
@@ -69,15 +72,20 @@
 
 @media only screen and (max-width: 1080px ) {
   .google-map{  
-    width: 21rem;
+    width: 31rem;
+    top: 23px;
     /* position: relative; */
     /* margin-top: 5rem; */
+  }
+  .carousel-inner{
+    width: 127%;
   }
   .navbar{
     width: 24.6rem;
   }
   .contact-us{
     margin-top: 20rem;
+    width: 127% !important;
   }
   .card{
     width: 10rem;
