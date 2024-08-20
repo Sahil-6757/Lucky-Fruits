@@ -1,111 +1,108 @@
-
-*{
+* {
   padding: 0;
   margin: 0;
 }
 
 
-.button{
+.button {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.card{
+
+.card {
   position: relative;
   height: 34.5rem;
 }
-.card:hover{
+
+.card:hover {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.about-us{
+.about-us {
   background-color: #DEEEEB;
   height: 23rem;
   width: 100%;
 }
 
-.about-us h2{
+.about-us h2 {
   color: #34495E;
 }
 
-.shop-name{
+.shop-name {
   color: #34495E;
 }
 
-.fa-regula{
+.fa-regula {
   height: 12px;
   width: 12px;
   color: black;
 }
 
-.google-map{
+.google-map {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border:0; width: 38rem; height: 19rem ; 
+  border: 0;
+  width: 38rem;
+  height: 19rem;
 }
+
 @media only screen and (max-width: 480px) {
-  .login-btn{
+  .login-btn {
     margin-top: -58px;
     margin-left: 12px;
     position: absolute;
     bottom: -18px;
-}
-.about-us{
-  width: 127%;
-}
-  }
-  .main-navbar{
-    width: 32rem !important;
-  }
-  .Navbar-login{
-    position: absolute;
-    margin-left: 25rem !important;
-    margin-top: -1rem !important;
-  }
-  .cart-icon{
-    position: absolute;
-    top: -8px;
-    font-size: 22px;
-    margin-left: -17px;
   }
 
+  .about-us {
+    width: 127%;
+  }
+}
 
-@media only screen and (max-width: 1080px ) {
-  .google-map{  
+
+
+
+@media only screen and (max-width: 1080px) {
+  .google-map {
     width: 31rem;
     top: 23px;
     /* position: relative; */
     /* margin-top: 5rem; */
   }
-  .carousel-inner{
+
+  .carousel-inner {
     width: 127%;
   }
-  .navbar{
+
+  .navbar {
     width: 24.6rem;
   }
-  .contact-us{
+
+  .contact-us {
     margin-top: 20rem;
     width: 127% !important;
   }
-  .card{
+
+  .card {
     width: 10rem;
     height: auto;
   }
 }
 
-.contact-us{
+.contact-us {
   background-color: #DEEEEB;
   height: 23rem;
   width: 100%;
 }
 
-.contact-us h2{
+.contact-us h2 {
   color: #34495E;
 
-} 
+}
 
-.login-btn{
- 
+.login-btn {
+
   border: none;
   background-color: #72F16D;
   border-radius: 7px;
@@ -114,14 +111,15 @@
   color: #212F3D;
   font-weight: 600;
 }
-.login-form{
+
+.login-form {
   display: flex;
   align-items: center;
   justify-content: center;
 
 }
 
-.login{
+.login {
   height: 50vh;
   width: 50vw;
   overflow: hidden;
@@ -135,36 +133,36 @@
 
 /* Admin Dashboard ends */
 
-.wrapper{
+.wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
-  
+
 }
 
-.cart-container{
+.cart-container {
   /* border: 1px solid brown; */
   height: 43rem;
   width: 75rem;
   /* background-color: #212F3D; */
 }
 
-.cart-items{
+.cart-items {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.checkout-btn{
+.checkout-btn {
   display: flex;
   align-items: center;
   justify-content: end;
   padding: 1rem;
 }
 
-.total{
+.total {
   display: flex;
   justify-content: end;
-  align-items:end;
+  align-items: end;
 }
