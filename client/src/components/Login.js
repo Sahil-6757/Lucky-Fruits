@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 function Login() {
   const navigation = useNavigate();
   const [isLoggin, setisLoggin] = useState({
-    login:false
-  })
+    login: false,
+  });
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -24,14 +24,13 @@ function Login() {
   // }
 
   function loginSuccess() {
-    setisLoggin({login:true})
-    localStorage.setItem("login",isLoggin.login)
+    setisLoggin({ login: true });
+    localStorage.setItem("login", isLoggin.login);
     console.log(isLoggin.login);
   }
   function loginFail() {
-    setisLoggin({login:false})
-    localStorage.setItem("login",isLoggin.login)
-
+    setisLoggin({ login: false });
+    localStorage.setItem("login", isLoggin.login);
     console.log(isLoggin);
   }
   const loginBtn = (e) => {
@@ -57,7 +56,7 @@ function Login() {
               position: "top-center",
               autoClose: 1000,
             });
-            localStorage.setItem("login",isLoggin.login)
+            localStorage.setItem("login", isLoggin.login);
             loginSuccess();
             navigation("/Dashboard");
           } else {
@@ -91,7 +90,7 @@ function Login() {
       <div className="login-form container">
         <form action="" method="post">
           <div className="login">
-            {" "}
+       
             <input
               type="email"
               className="form-control"

@@ -1,14 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import  { useState } from 'react';
+import { useState } from "react";
 import "../App.css";
 
-
 function Navbar() {
-
-
-  
- 
   return (
     <nav className="navbar main-navbar  navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -28,10 +23,17 @@ function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div  id="navbarSupportedContent" className='collapse navbar-collapse show' >
+        <div
+          id="navbarSupportedContent"
+          className="collapse navbar-collapse show"
+        >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to={"/Dashboard/dHome"} className="nav-link active" aria-current="page">
+              <Link
+                to={"/Dashboard/dHome"}
+                className="nav-link active"
+                aria-current="page"
+              >
                 Home
               </Link>
             </li>

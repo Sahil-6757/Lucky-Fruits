@@ -49,9 +49,11 @@ function Crousel() {
   }
 
   const getItems = async () => {
-    await axios.get("https://lucky-shop-backend.onrender.com/item").then((resp) => {
-      setData(resp.data);
-    });
+    await axios
+      .get("https://lucky-shop-backend.onrender.com/item")
+      .then((resp) => {
+        setData(resp.data);
+      });
   };
 
   async function getData() {
@@ -190,7 +192,7 @@ function Crousel() {
         </button>
       </div>
 
-      <div className="container my-3" style={{width:"127%"}}>
+      <div className="container my-3" style={{ width: "127%" }}>
         <h4 className="text-center text-success"> Fast Fruit Delivery </h4>
         <h5 className="text-center text-warning">
           Do Order with a wholesale price
@@ -211,7 +213,7 @@ function Crousel() {
                         className="card my-2"
                         onClick={() => handleCard(value, index)}
                         key={value.image}
-                        style={{ width: "20rem", height: "auto",left:'80px' }}
+                        style={{ width: "20rem", height: "auto", left: "80px" }}
                       >
                         <img
                           src={require(`../components/Dashboard/images/${value.image}`)}
