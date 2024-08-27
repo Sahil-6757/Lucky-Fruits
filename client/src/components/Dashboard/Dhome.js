@@ -3,11 +3,34 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./Dashboard.css";
-
 import { DataGrid } from "@mui/x-data-grid";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import { Button, IconButton } from "@mui/material";
 function Dhome() {
   const [rows, setrows] = useState([]);
+  const [data, setData] = useState([]);
   const [Id, setId] = useState();
+  const [sales, setSales] = useState();
+  const [salesTotal, setSalestotal] = useState();
+  const [totalVal, setTotal] = useState();
+  const [loading, setLoading] = useState(true)
+  const [formData, setFormData] = useState({
+    name: "",
+    date: "",
+    rate: "",
+    quantity: "",
+    total: "",
+  });
+  const date = new Date();
+  let datee = (date.getDate());
+  let month = date.getMonth();
+  let year = date.getFullYear();
+
+  let Datee = `${year}-0${month + 1}-${datee}`;
+  const [todayDate, setdate] = useState({
+    date: Datee
+  })
 
   // const columns = [
   //   { field: "name", headerName: "Name", width: 130 },
@@ -24,20 +47,8 @@ function Dhome() {
     });
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const [totalVal, setTotal] = useState();
-
   let result;
-  const [formData, setFormData] = useState({
-    name: "",
-    date: "",
-    rate: "",
-    quantity: "",
-    total: "",
-  });
+
   const handleChange = (e) => {
     let { name, value } = e.target;
     setFormData({ ...formData, [name]: value, total: totalVal });
@@ -49,14 +60,43 @@ function Dhome() {
     setFormData({ ...formData, total: result });
   }
 
+  // function totalSales() {
+  //   let sum = data.reduce((curtval, accumulator) => {
+  //     console.log(accumulator.quantity)
+  //     return parseInt(curtval) + parseInt(accumulator.quantity);
+  //   }, 0);
+
+  //   setSales(sum)
+  //   console.log(sales)
+  // }
+
+  function getsalesData() {
+    axios.post('https://lucky-shop-backend.onrender.com/sales-result', todayDate).then((resp) => {
+      setData(resp.data)
+      let result = resp.data;
+      let sum = result.reduce((curtval, accumulator) => {
+        // console.log(accumulator.quantity)
+        return parseInt(curtval) + parseInt(accumulator.quantity);
+      }, 0);
+      setSales(sum)
+      console.log(sum)
+      let totalSum = result.reduce((curtval, accumulator) => {
+        // console.log(accumulator.quantity)
+        return parseInt(curtval) + parseInt(accumulator.total);
+      }, 0);
+      setSalestotal(totalSum)
+      console.log(salesTotal)
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+
   const handleClick = (Eid, Ename, Edate, Erate, Equantity) => {
     document.getElementById("name").value = Ename;
     document.getElementById("date").value = Edate;
     document.getElementById("rate").value = Erate;
     document.getElementById("quantity").value = Equantity;
-
     setFormData({ name: Ename, date: Edate, rate: Erate, quantity: Equantity });
-
     setId(Eid);
     getData();
   };
@@ -86,27 +126,31 @@ function Dhome() {
     getData();
   };
 
-  const handleDelete = (e,name) => {
-   let result =  window.confirm(`Are you really want to Delete ${name}`);
-   console.log(result);
-   if(result){
-    axios
-      .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
-      .then(async (resp) => {
-        await getData();
-        toast.success("Deleted Succssfully", {
-          autoClose: 1000,
-        });
-      })
-      .catch((error) => {});
-    getData();
-  };
-}
+  const handleDelete = (e, name) => {
+    let result = window.confirm(`Are you really want to Delete ${name}`);
+    console.log(result);
+    if (result) {
+      axios
+        .delete(`https://lucky-shop-backend.onrender.com/sales-delete/${e}`)
+        .then(async (resp) => {
+          getData();
+          toast.success("Deleted Succssfully", {
+            autoClose: 1000,
+          });
+          await getsalesData()
+          document.getElementById("name").value = "";
+          document.getElementById("date").value = "";
+          document.getElementById("rate").value = "";
+          document.getElementById("quantity").value = "";
+        })
+        .catch((error) => { });
+      getData();
+      getsalesData()
+    };
+  }
 
   const handleBlur = () => {
     sum();
-
-    // formData.total = total;
   };
 
   const handleSubmit = (e) => {
@@ -125,16 +169,25 @@ function Dhome() {
       toast.success("Successfully Saved", {
         autoClose: 1000,
       });
+      getsalesData()
       getData();
       document.getElementById("name").value = "";
       document.getElementById("date").value = "";
       document.getElementById("rate").value = "";
       document.getElementById("quantity").value = "";
+      document.getElementById('name').focus()
     }
     getData();
+
   };
+
+  useEffect(() => {
+    getData();
+    getsalesData()
+  }, []);
   return (
     <div className="container" style={{ width: "32rem" }}>
+
       <form action="" className="home-form" method="post" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -172,64 +225,83 @@ function Dhome() {
 
         <hr />
         <h4 className="d-flex justify-content-center">Total = {totalVal}</h4>
-        <input type="submit" value="Save" className="btn btn-primary" />
-        <input
+        {/* <input type="submit" value="Save" className="btn btn-primary" /> */}
+        <Button type="submit" variant="contained"> Save</Button>
+
+        <Button variant="contained" onClick={handleEdit} className="mx-3" color="success">
+          Update
+        </Button>
+
+
+        {/* <input
           type="button"
           value="Update"
           onClick={handleEdit}
           className="mx-3 btn btn-secondary"
-        />
+        /> */}
       </form>
 
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Rate</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Total</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((value, index) => {
-            return (
-              <tr
-                onClick={() =>
-                  handleClick(
-                    value._id,
-                    value.name,
-                    value.date,
-                    value.rate,
-                    value.quantity
-                  )
-                }
-                className="table-row"
-              >
-                <th scope="row">{index + 1}</th>
-                <td>{value.name}</td>
-                <td>{value.date}</td>
-                <td>{value.rate}</td>
-                <td>{value.quantity}</td>
-                <td>{value.total}</td>
-                <td>
-                  <i
-                    class="fa-solid fa-trash text-danger mx-3 "
-                    onClick={() => {
-                      handleDelete(value._id, value.name);
-                    }}
-                  ></i>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="rightBar">
+        <div className="card" style={{ height: '6rem' }}>
+          <div className="card-body ">
+            <p className="card-text">Today's Sales : <b> {sales}</b></p>
+            <p className="card-text">Today's Total : <b> {salesTotal}</b></p>
+          </div>
+        </div>
+      </div>
 
-      {/* Material UI GridView */}
-      {/* <DataGrid
+
+      <div class="table-responsive-sm">
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((value, index) => {
+              return (
+                <tr key={value._id}
+                  onClick={() =>
+                    handleClick(
+                      value._id,
+                      value.name,
+                      value.date,
+                      value.rate,
+                      value.quantity
+                    )
+                  }
+                  className="table-row"
+                >
+                  <th scope="row">{index + 1}</th>
+                  <td>{value.name}</td>
+                  <td>{value.date}</td>
+                  <td>{value.rate}</td>
+                  <td>{value.quantity}</td>
+                  <td>{value.total}</td>
+                  <td>
+                    <i
+                      className="fa-solid fa-trash text-danger mx-3 "
+                      onClick={() => {
+                        handleDelete(value._id, value.name);
+                      }}
+                    ></i>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        </div>
+
+        {/* Material UI GridView */}
+        {/* <DataGrid
       className="my-3"
         style={{ width: "50rem" }}
         rows={rows}
@@ -243,8 +315,9 @@ function Dhome() {
         pageSizeOptions={[5, 10]}
         
       /> */}
-      <Outlet />
-    </div>
+        <Outlet />
+      </div>
+
   );
 }
 

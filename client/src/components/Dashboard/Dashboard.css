@@ -1,7 +1,8 @@
-body{
+body {
   margin: 0;
   padding: 0;
 }
+
 .left-panel {
   top: 0;
   float: left;
@@ -74,21 +75,38 @@ ul .link {
 
 .table-row :hover {
   cursor: pointer;
-
 }
 
 .table {
   width: 50rem;
   margin-left: -8rem;
-
 }
 
+<<<<<<< HEAD
 .container DataGrid{
   margin-left: auto;
 }
 
+=======
+.rightBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 9rem;
+  right: 4rem;
+  width: 20rem;
+}
+>>>>>>> f809edeadc9bf4406da4bc800c1fe200b8185eb4
 
-@media only screen and (max-width: 480px){
+.Datagrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 480px) {
   .left-panel {
     width: 3.4rem;
     height: 3.4rem;
@@ -98,6 +116,7 @@ ul .link {
     background-color: transparent;
   }
 
+<<<<<<< HEAD
   .fa-cart-shopping{
     margin-left: -1rem;
   }
@@ -107,8 +126,16 @@ ul .link {
   }
 
   .left-panel ul{
+=======
+  .rightBar {
+    display: none;
+  }
+
+  .left-panel ul {
+>>>>>>> f809edeadc9bf4406da4bc800c1fe200b8185eb4
     display: flex;
     bottom: 0;
+    left: 15px;
     position: fixed;
     align-items: center;
     justify-content: space-between;
@@ -116,12 +143,13 @@ ul .link {
     border-radius: 23px;
     background-color: rgb(208 218 206);
   }
+
   .item-page {
     font-size: 12px;
     padding: 12px;
   }
 
-  .home-form{
+  .home-form {
     position: relative;
     margin-left: 5rem;
     width: 15rem;
@@ -132,14 +160,15 @@ ul .link {
     margin: 0;
     margin-bottom: 5rem;
   }
-  .col{
+
+  .col {
     padding: -0.5rem .5rem;
   }
 
-  .Navbar-login{
+  .Navbar-login {
     position: absolute;
     margin-left: 18rem;
-    margin-top: -2rem;  
+    margin-top: -2rem;
   }
 
   .fa-bars {

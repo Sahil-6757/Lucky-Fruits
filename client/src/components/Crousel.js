@@ -190,7 +190,7 @@ function Crousel() {
         </button>
       </div>
 
-      <div className="container my-3">
+      <div className="container my-3" style={{width:"127%"}}>
         <h4 className="text-center text-success"> Fast Fruit Delivery </h4>
         <h5 className="text-center text-warning">
           Do Order with a wholesale price
@@ -211,7 +211,7 @@ function Crousel() {
                         className="card my-2"
                         onClick={() => handleCard(value, index)}
                         key={value.image}
-                        style={{ width: "20rem", height: "auto" }}
+                        style={{ width: "20rem", height: "auto",left:'80px' }}
                       >
                         <img
                           src={require(`../components/Dashboard/images/${value.image}`)}
@@ -272,7 +272,7 @@ function Crousel() {
                 <i className="fa-solid fa-phone"></i>+91 8983306757
               </p>
             </div>
-            <div className="col-md-6 col-sm-6">
+            <div className="col-md-6 col-sm-6 google-map">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.553823638174!2d75.56621797400855!3d21.010514988407337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd90fa67a280937%3A0x110c4a0c9002729e!2sLucky%20Maharashtra%20Nariyal%20Suppliers!5e0!3m2!1sen!2sin!4v1708224901113!5m2!1sen!2sin"
                 className="google-map"

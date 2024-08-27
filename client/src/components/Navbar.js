@@ -10,7 +10,7 @@ function Navbar() {
   
  
   return (
-    <nav className="navbar  navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar main-navbar  navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <a className="navbar-brand text-success" href="/">
           <Link to={"/"} className="nav-link active" aria-current="page">
@@ -39,7 +39,7 @@ function Navbar() {
           <div className="Navbar-login">
             <Link
               to="cart"
-              className="fa-solid fa-cart-shopping align-center"
+              className="fa-solid fa-cart-shopping cart-icon align-center"
             ></Link>
             <Link to="login" className="btn login-btn mx-3">
               Login

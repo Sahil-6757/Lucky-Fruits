@@ -1,14 +1,13 @@
 import React from "react";
 import DNavbar from "./DNavbar";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Outlet, } from "react-router-dom";
+import "./Dashboard.css";
 
 function Dashboard() {
   return (
     <>
-    <DNavbar/>
-    <Outlet />
-    
-      
+      <DNavbar />
+      <Outlet />
     </>
   );
 }
