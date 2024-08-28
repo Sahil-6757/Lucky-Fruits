@@ -14,7 +14,6 @@ body {
 
 .left-panel ul {
   list-style: none;
-
   font-size: 1.4em;
 }
 
@@ -81,6 +80,10 @@ ul .link {
   width: 100%;
 }
 
+.container DataGrid{
+  margin-left: auto;
+}
+
 .rightBar {
   display: flex;
   align-items: center;
@@ -121,6 +124,17 @@ ul .link {
     background-color: transparent;
   }
 
+
+  .fa-cart-shopping{
+    margin-left: -1rem;
+  }
+
+  .login-btn{
+    margin-top: -3rem;
+  }
+
+  .left-panel ul{
+
   .rightBar {
     display: none;
   }
@@ -134,7 +148,7 @@ ul .link {
     justify-content: space-between;
     width: 90%;
     border-radius: 23px;
-    background-color: rgb(177, 255, 161);
+    background-color: rgb(208 218 206);
   }
 
   .item-page {
@@ -206,4 +220,4 @@ ul .link {
 
 .dataGrid {
   margin-right: -9rem !important;
-}
+}}

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "./Dashboard.css";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 function Dsetting() {
   const [rows, setrows] = useState([]);
@@ -27,22 +27,24 @@ function Dsetting() {
   }, []);
 
   return (
-    <div className="Datagrid">
-      <DataGrid
-        className="my-3 mx-3"
-        style={{ width: "50rem", marginLeft: "2rem !important" }}
-        rows={rows}
-        getRowId={(row) => row._id}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}
-        pageSizeOptions={[5, 10]}
-      />
+    <div className="container mx-3">
+      <div className="Datagrid">
+        <DataGrid
+          className="my-3 mx-3"
+          style={{ width: "50rem", marginLeft: "2rem !important" }}
+          rows={rows}
+          getRowId={(row) => row._id}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 5 },
+            },
+          }}
+          pageSizeOptions={[5, 10]}
+        />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Dsetting
+export default Dsetting;
