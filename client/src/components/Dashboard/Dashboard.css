@@ -78,8 +78,7 @@ ul .link {
 }
 
 .table {
-  width: 50rem;
-  margin-left: -8rem;
+  width: 100%;
 }
 
 .rightBar {
@@ -97,6 +96,19 @@ ul .link {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.table-container {
+  height: 23rem;
+  overflow: scroll;
+  width: max-content;
+
+}
+
+.table-head {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 480px) {

@@ -98,11 +98,9 @@
 
 .contact-us h2 {
   color: #34495E;
-
 }
 
 .login-btn {
-
   border: none;
   background-color: #72F16D;
   border-radius: 7px;
@@ -126,9 +124,7 @@
   margin-top: 3rem;
 }
 
-
 /* Admin Dashboard starts */
-
 
 
 /* Admin Dashboard ends */
@@ -138,7 +134,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
-
 }
 
 .cart-container {

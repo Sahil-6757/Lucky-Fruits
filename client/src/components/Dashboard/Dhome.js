@@ -176,10 +176,20 @@ function Dhome() {
       document.getElementById("rate").value = "";
       document.getElementById("quantity").value = "";
       document.getElementById('name').focus()
+      setFormData({name:"",date:"",rate:"",quantity:"",total:""})
+
     }
     getData();
-
   };
+
+  const handleReset=()=>{
+    document.getElementById("name").value = "";
+      document.getElementById("date").value = "";
+      document.getElementById("rate").value = "";
+      document.getElementById("quantity").value = "";
+      document.getElementById('name').focus()
+      setFormData({name:"",date:"",rate:"",quantity:"",total:""})
+  }
 
   useEffect(() => {
     getData();
@@ -227,9 +237,14 @@ function Dhome() {
         <h4 className="d-flex justify-content-center">Total = {totalVal}</h4>
         {/* <input type="submit" value="Save" className="btn btn-primary" /> */}
         <Button type="submit" variant="contained"> Save</Button>
+        
 
         <Button variant="contained" onClick={handleEdit} className="mx-3" color="success">
           Update
+        </Button>
+
+        <Button variant="contained" onClick={handleReset} className="bg-danger" color="success">
+          Reset
         </Button>
 
 
@@ -251,9 +266,9 @@ function Dhome() {
       </div>
 
 
-      <div class="table-responsive-sm">
+      <div class="table-container">
         <table className="table table-hover">
-          <thead>
+          <thead className="table-head">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
