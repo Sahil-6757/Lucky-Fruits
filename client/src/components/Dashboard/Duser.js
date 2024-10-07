@@ -2,7 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import Lottie from "lottie-react";
+import "./Dashboard.css";
+import groovyWalkAnimation from "./Animation - 1726914106175.json";
 function Duser() {
   const [User, setUser] = useState();
 
@@ -15,17 +17,19 @@ function Duser() {
 
   const handleDelete = (index) => {
     try {
-      axios.delete(`https://lucky-shop-backend.onrender.com/userDelete/${index}`).then((resp) => {
-        if (resp.data.message === "Deleted") {
-          toast.success("Deleted Successfully", {
-            autoClose: 1000,
-            position: "top-right",
-          });
-          getData();
-        } else {
-        }
-        console.log(resp.data.message);
-      });
+      axios
+        .delete(`https://lucky-shop-backend.onrender.com/userDelete/${index}`)
+        .then((resp) => {
+          if (resp.data.message === "Deleted") {
+            toast.success("Deleted Successfully", {
+              autoClose: 1000,
+              position: "top-right",
+            });
+            getData();
+          } else {
+          }
+          console.log(resp.data.message);
+        });
     } catch (error) {
       console.log(error);
     }
@@ -62,7 +66,6 @@ function Duser() {
                     <input
                       type="button"
                       value="Delete"
-                      
                       onClick={() => handleDelete(value._id)}
                       className="btn btn-danger"
                     />
@@ -71,7 +74,15 @@ function Duser() {
               );
             })
           ) : (
-            <h2>No data found</h2>
+            <div className="loading">
+              <div className="sub-loading">
+
+              <Lottie
+                style={{ marginBottom: "6rem" }}
+                animationData={groovyWalkAnimation}
+              />
+              </div>
+            </div>
           )}
         </tbody>
       </table>

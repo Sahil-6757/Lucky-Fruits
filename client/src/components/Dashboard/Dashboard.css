@@ -17,6 +17,14 @@ body {
   font-size: 1.4em;
 }
 
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+}
+
 ul .link {
   display: flex;
   align-items: center;

@@ -28,15 +28,7 @@ function Navbar() {
           className="collapse navbar-collapse show"
         >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link
-                to={"/Dashboard/dHome"}
-                className="nav-link active"
-                aria-current="page"
-              >
-                Home
-              </Link>
-            </li>
+           
           </ul>
           <div className="Navbar-login">
             <Link

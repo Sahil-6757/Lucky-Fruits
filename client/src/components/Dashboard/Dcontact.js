@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./Dashboard.css";
+import Lottie from "lottie-react";
+import groovyWalkAnimation from "./Animation - 1726914106175.json";
 
 function Dcontact() {
   const [Contact, setContact] = useState();
@@ -69,7 +71,12 @@ function Dcontact() {
               );
             })
           ) : (
-            <h2>No data found</h2>
+            <div className="loading">
+            <Lottie
+              style={{ marginBottom: "6rem" }}
+              animationData={groovyWalkAnimation}
+            />
+          </div>
           )}
         </tbody>
       </table>

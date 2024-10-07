@@ -41,7 +41,6 @@ function Ditem() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       let name = document.getElementById("name").value;
       let description = document.getElementById("description").value;
