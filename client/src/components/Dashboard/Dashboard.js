@@ -4,6 +4,7 @@ import { Outlet, } from "react-router-dom";
 import "./Dashboard.css";
 
 function Dashboard() {
+  
   return (
     <>
       <DNavbar />

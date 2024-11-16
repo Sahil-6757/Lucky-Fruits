@@ -51,7 +51,7 @@ function Ditem() {
           autoClose: 2000,
         });
       } else {
-        await axios.post("https://lucky-shop-backend.onrender.com/item", formData, {
+        await axios.post("http://localhost:8000/item", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -129,7 +129,7 @@ function Ditem() {
 
   return (
     <>
-      <form action="" onSubmit={handleSubmit} method="post">
+      <form action="" onSubmit={handleSubmit} method="post" enctype="multipart/form-data">
         <div className="item-page">
           <div className="item-form">
             <div className="mb-3">

@@ -4,6 +4,20 @@ import { useState } from "react";
 import "../App.css";
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [count, setcount] = useState();
+
+  function countItem() {
+    let items = JSON.parse(localStorage.getItem("Items"));
+    setcount(items.length);
+  }
+
+  useEffect(() => {
+    let userLogin = JSON.parse(localStorage.getItem("login"));
+    setIsLoggedIn(userLogin);
+    countItem();
+  }, []);
+
   return (
     <nav className="navbar main-navbar  navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -27,16 +41,15 @@ function Navbar() {
           id="navbarSupportedContent"
           className="collapse navbar-collapse show"
         >
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-           
-          </ul>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
           <div className="Navbar-login">
             <Link
               to="cart"
               className="fa-solid fa-cart-shopping cart-icon align-center"
             ></Link>
+            <p className="cart-count">{count == null ? 0: count}</p>
             <Link to="login" className="btn login-btn mx-3">
-              Login
+              {isLoggedIn ? <h5>Login</h5> : <h5>Logout</h5>}
             </Link>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../App.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function Checkout() {
@@ -51,7 +51,7 @@ function Checkout() {
             position: "top-center",
             autoClose: 1000,
           });
-          localStorage.clear();
+          localStorage.setItem("Items",'[]');
           navigation('/');
         }
         

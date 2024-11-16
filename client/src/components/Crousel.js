@@ -1,13 +1,6 @@
 import image1 from "../image/image1.jpg";
 import image2 from "../image/image2.jpg";
 import image3 from "../image/image3.jpg";
-import apple from "../image/apple.jpg";
-import mango from "../image/mango.webp";
-import orange from "../image/orange.jpg";
-import grapes from "../image/grapes.jpg";
-import pomegranate from "../image/Pomegranate.jpg";
-import pineapple from "../image/Pineapple.avif";
-import chicoo from "../image/chicoo.webp";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../App.css";

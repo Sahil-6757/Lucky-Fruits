@@ -4,9 +4,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 function Login() {
   const navigation = useNavigate();
-  const [isLoggin, setisLoggin] = useState({
-    login: false,
-  });
+  localStorage.setItem("login", false);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -24,14 +23,12 @@ function Login() {
   // }
 
   function loginSuccess() {
-    setisLoggin({ login: true });
-    localStorage.setItem("login", isLoggin.login);
-    console.log(isLoggin.login);
+    localStorage.setItem("login", true);
+    let login = JSON.parse(localStorage.getItem("login"))
+    console.log(login)
   }
   function loginFail() {
-    setisLoggin({ login: false });
-    localStorage.setItem("login", isLoggin.login);
-    console.log(isLoggin);
+    // setisLoggin({ login: "false" });
   }
   const loginBtn = (e) => {
     e.preventDefault();
@@ -56,7 +53,6 @@ function Login() {
               position: "top-center",
               autoClose: 1000,
             });
-            localStorage.setItem("login", isLoggin.login);
             loginSuccess();
             navigation("/Dashboard");
           } else {
@@ -90,7 +86,6 @@ function Login() {
       <div className="login-form container">
         <form action="" method="post">
           <div className="login">
-       
             <input
               type="email"
               className="form-control"

@@ -164,8 +164,13 @@ app.delete("/delete-order/:id", async (req, res) => {
   try {
     let id = await req.params.id;
     let data = await Order.findById({ _id: id });
-
-    await Order.deleteOne({ _id: id });
+    if(!data){
+      await Order.deleteOne({_id:id});
+      res.json({message:"Order Deleted"})
+    }
+    else{
+      res.json({message:"No Data found"})
+    }
   } catch (error) {
     console.log(error);
   }

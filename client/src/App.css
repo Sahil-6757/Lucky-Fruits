@@ -76,7 +76,13 @@
   }
 
   .navbar {
-    width: 24.6rem;
+    width: 100%;
+  }
+
+  .Navbar-login{
+    display: flex;
+    align-items: center;
+    justify-content: end;
   }
 
   .contact-us {
@@ -105,7 +111,7 @@
   background-color: #72F16D;
   border-radius: 7px;
   padding: 4px;
-  width: 4rem;
+  width: 5rem;
   color: #212F3D;
   font-weight: 600;
 }
@@ -147,6 +153,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+
 }
 
 .checkout-btn {
@@ -160,4 +167,19 @@
   display: flex;
   justify-content: end;
   align-items: end;
+}
+
+.cart-count{
+  position: absolute;
+  height: 13px;
+  font:bold;
+  width: 13px;
+  color: rgb(134, 100, 100);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(247, 150, 150);
+  top: 12px;
 }

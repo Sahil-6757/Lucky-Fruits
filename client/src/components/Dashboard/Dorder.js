@@ -24,7 +24,10 @@ function Dorder() {
   });
 
   const handleDelete = (e) => {
-    axios.delete(`https://lucky-shop-backend.onrender.com:10000/delete-order/${e}`).then((resp) => {});
+    console.log(e)
+    axios.delete(`https://lucky-shop-backend.onrender.com:10000/delete-order/${e}`).then((resp) => {
+      console.log(resp.data)
+    });
     getData();
   };
 
@@ -121,7 +124,7 @@ function Dorder() {
                   <i
                     class="fa-solid fa-trash text-danger"
                     style={{ fontSize: "1.4rem" }}
-                    onClick={() => handleDelete(value.id)}
+                    onClick={() => handleDelete(value._id)}
                   ></i>
                 </td>
               </tr>
